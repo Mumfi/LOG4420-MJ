@@ -1,0 +1,27 @@
+extends layout
+
+block content
+
+    
+    section
+        h1 Examen de HTML
+        form(action="./resultats")
+            fieldset
+                legend Question 2 : HTML stands for what?
+                label(for="ExamQ2rep1")
+                    input(id="ExamQ2rep1",type="checkbox") 
+                    | HyperText Markup Language
+                label(for="ExamQ2rep2")
+                    input(id="ExamQ1rep2", type="checkbox")
+                    | HyperText Machine Language      
+                label(for="ExamQ2rep3")
+                    input(id="ExamQ1rep3", type="checkbox")
+                    | HP Transmitting More Languages
+                label(for="ExamQ2rep4")
+                    input(id="ExamQ1rep4", type="checkbox")
+                    | How To Make Loans 
+            p: input(
+                      type="submit"
+                      value="Question suivante"
+                    )
+        include extensionExamen
