@@ -2,50 +2,51 @@ extends layout
 
 block content
 
-    section
+    section(id='tableau-content')
         h1 Tableau de bord
-        section
-            h2 Test Rapide
-            p Pour commencer un test rapide, c'est par 
-                a(href="test_rapide1") ici
-                | !
-        section
-            h2 Examen
-            p Pour commencer un examen, veuillez remplir le formulaire ci-dessous :
-            form(action="/examen1")
-                label(for="theme") Theme :
-                select(id="theme")
-                    option(value="html") HTML
-                    option(value="css") CSS
-                    option(value="javascript") JavaScript
+        div
+            section
+                h2 Test Rapide
+                p Pour commencer un test rapide :
                 br
-                label(for="nb_question") Nombre de question :
-                input(
-                      id="nb_question"
-                      type="number"
-                      min="1"
-                      max="50"
-                      stpe="1"
-                      required
-                      )
-                input(
-                      type="submit"
-                      value="Démarrer"
-                      )
-        section
-            h2 Statistiques :
-            table(border="3")
-                tr
-                    td Nombre de tests rapides réussis
-                    td 4
-                tr
-                    td Moyenne des examens
-                    td 13/20
-                tr
-                    td Résultat du test 1
-                    td 5
-                tr
-                    td Résultat du test 2
-                    td 10
+                a(href="test_rapide1") Cliquez ici
+            section
+                h2 Examen
+                p Pour commencer un examen, veuillez remplir le formulaire ci-dessous :
+                form(action="/examen1")
+                    label(for="theme") Theme :
+                    select(id="theme")
+                        option(value="html") HTML
+                        option(value="css") CSS
+                        option(value="javascript") JavaScript
+                    br
+                    label(for="nb_question") Nombre de question :
+                    input(
+                          id="nb_question"
+                          type="number"
+                          min="1"
+                          max="50"
+                          stpe="1"
+                          required
+                          )
+                    input(
+                          type="submit"
+                          value="Démarrer"
+                          )
+            section
+                h2 Statistiques :
+                table(border="3")
+                    tr
+                        td Nombre de tests rapides réussis
+                        td 4
+                    tr
+                        td Moyenne des examens
+                        td 13/20
+                    tr
+                        td Résultat du test 1
+                        td 5
+                    tr
+                        td Résultat du test 2
+                        td 10
                     
                 

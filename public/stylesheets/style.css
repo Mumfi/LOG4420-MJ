@@ -1,8 +1,225 @@
 body {
-  padding: 50px;
+  padding: 0;
+  margin: 0;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
 }
+
+h1{
+    text-align: center;
+    font-weight: normal;
+    font-size: 32px;
+}
+
+h2{
+    font-weight: 400;
+    color: #79cbf1;
+}
+
+input[type=submit]{
+    color: white;
+    text-decoration:inherit;
+    padding: 8px;
+    background: linear-gradient(#7abb59,#95e66d);
+    border-radius : 15px;
+    border-style: none;
+    font-size: 16px;
+}
+
+input[type=submit]:hover{
+    background: linear-gradient(#95e66d,#7abb59);
+}
+
+
+fieldset{
+    border-radius: 15px;
+}
+
+legend {
+    font-weight:600;
+}
+
+#index-content img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#index-content section{
+    display: block;
+    margin-left: 80px;
+    margin-right: 80px;
+}
+
+#index-content section{
+    border: solid 2px;
+    border-color: #8a8a8a;
+    border-radius: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    text-align: justify;
+    margin-left: 80px;
+    margin-right: 80px;
+}
+
+
+#tableau-content div{
+    border : solid 2px;
+    border-radius: 15px;
+    border-color: #8a8a8a;
+    margin: 15px;
+    padding: 15px;
+    
+}
+
+#tableau-content section{
+    margin-left : 40px;
+    margin-bottom: 40px;
+}
+
+
+#tableau-content section a{
+    color: white;
+    text-decoration:inherit;
+    padding: 8px;
+    margin: 50px;
+    background: linear-gradient(#7abb59,#95e66d);
+    border-radius : 15px;
+    font-size: 16px;
+}
+
+#tableau-content section a:hover{
+    background: linear-gradient(#95e66d,#7abb59);
+}
+
+#tableau-content form{
+    width : 290px;
+    border : solid 2px;
+    padding: 15px;
+    border-radius: 15px;
+    border-color: #95e66d;
+    line-height: 40px;
+    
+}
+
+#tableau-content input[type=submit]{
+    margin:10px 0;
+    margin-left: 90px;
+}
+
+#tableau-content input[type=submit]{
+    color: white;
+    text-decoration:inherit;
+    padding: 8px;
+    background: linear-gradient(#7abb59,#95e66d);
+    border-radius : 15px;
+    border-style: none;
+    font-size: 16px;
+    margin:10px 0;
+    margin-left: 90px;
+}
+
+#tableau-content input[type=submit]:hover{
+    background: linear-gradient(#95e66d,#7abb59);
+}
+
+#tableau-content table {
+    border-collapse: collapse;
+    border : 1px;
+}
+
+#tableau-content th, #tableau-content td {
+   
+    padding: 8px;
+    text-align: left;
+}
+
+#tableau-content td:first-child{
+    background-color: #95e66d;
+    color: white;
+}
+
+#tableau-content tr:hover {
+    background-color: #f5f5f5;
+}
+
+#instruction-content div{
+    border : solid 2px;
+    border-radius: 15px;
+    border-color: #8a8a8a;
+    margin: 80px 80px;
+    padding: 15px;
+}
+
+#instruction-content section{
+    margin: 20px 15px;
+}
+
+#instruction-content p{
+    text-align: justify;
+}
+
+.test-content{
+    margin: 20px;
+}
+
+.test-content form{
+    margin: 60px;
+    line-height: 40px;
+}
+
+
+.test-content label{
+    padding: 25px;
+}
+
+.bouton-bleu{
+    margin-top: 40px;
+}
+
+.bouton-bleu a{
+    color: white;
+    text-decoration:inherit;
+    padding: 8px;
+    background: linear-gradient(#5b98b5,#7dd3fa);
+    border-radius : 15px;
+    font-size: 16px;
+    margin-top: 40px;
+}
+
+.bouton-bleu a:hover{
+    background: linear-gradient(#7dd3fa,#5b98b5);
+}
+
+
+.examen-content{
+    margin: 20px;
+}
+
+.examen-content form{
+    margin: 60px;
+    line-height: 40px;
+}
+
+
+.examen-content label{
+    padding: 25px;
+}
+
+
+footer{
+    color: white;
+    background-color: #f15721;
+    margin-top: 70px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 15px;
+    line-height: 30px;
+}
+
+
+

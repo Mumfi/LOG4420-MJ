@@ -2,7 +2,7 @@ extends layout
 
 block content
 
-    section
+    section(class='examen-content')
         h1 Examen de HTML
         form(action="./examen2")
             fieldset
@@ -23,7 +23,6 @@ block content
                       type="submit"
                       value="Question suivante"
                     )
-            p: test
         include extensionExamen
 
 
