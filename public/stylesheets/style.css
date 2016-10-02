@@ -283,6 +283,7 @@ ul#topnav {
     list-style-type: none;
     padding: 0;
     background-color:darkblue;
+    margin-top: 0;
 }
 
 li {
@@ -298,7 +299,7 @@ li a#topnav {
 }
 
 li a#topnav:hover {
-    background-color: #005f5f;
+    background-color: #6cbd44;
 }
 
 
@@ -368,5 +369,5 @@ img#instructions {
 }
 
 nav a[title='Accueil'], nav a[title='Bord'], nav a[title='Instructions'] {
-    background-color: cadetblue;
+    background-color: #79cbf1;
 }
