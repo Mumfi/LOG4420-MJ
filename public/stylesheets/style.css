@@ -37,6 +37,11 @@ input[type=submit]:hover{
 
 fieldset{
     border-radius: 15px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    line-height: 0;
 }
 
 legend {
@@ -74,7 +79,6 @@ legend {
     border-color: #8a8a8a;
     margin: 15px;
     padding: 15px;
-    
 }
 
 #tableau-content section{
@@ -176,27 +180,6 @@ legend {
     background-color: #f5f5f5;
 }
 
-/*#tableau-content table {
-    border-collapse: collapse;
-    border : 1px;
-}
-
-#tableau-content th, #tableau-content td {
-   
-    padding: 8px;
-    text-align: left;
-}
-
-#tableau-content td:first-child{
-    background-color: #95e66d;
-    color: white;
-}
-
-#tableau-content tr:hover {
-    background-color: #f5f5f5;
-}
-*/
-
 #instruction-content div{
     border : solid 2px;
     border-radius: 15px;
@@ -206,11 +189,23 @@ legend {
 }
 
 #instruction-content section{
-    margin: 20px 15px;
+    margin: 40px 25px;
 }
 
 #instruction-content p{
     text-align: justify;
+}
+
+
+#resultat-content div{
+    margin: 10px 30px;
+    border: solid 2px #8a8a8a;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+#resultat-content > p{
+    margin-left: 30px;
 }
 
 .test-content{
@@ -269,6 +264,7 @@ footer{
     padding-bottom: 7px;
     padding-left: 15px;
     line-height: 30px;
+    clear : both;
 }
 
 
@@ -295,20 +291,40 @@ li a#topnav:hover {
     background-color: #005f5f;
 }
 
-section#statsection {
+
+.statsection h2{
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+
+.statsection {
     font-size: 16px;
-    padding: 10px;
+    padding: 20px;
     float: right;
-    width: 250px;
-    height: 190px;
-    background-color: darkgrey;
+    width: 320px;
+    background-color: #dfedf4;
     display: inline;
-    border: solid 1px black;
+    border: solid 1px #8a8a8a;
+    border-radius: 15px;
+    margin: 0 40px;
+}
+
+.statsection td{
+    padding: 8px;
+}
+
+#tableau-content .statsection {
+    position: absolute;
+    top: 50%; 
+    right :10%;
 }
 
 
 img#instructions {
     float: right;
+    margin-left: 20px;
+    margin-bottom: 20px;
 }
 
 nav a[title='Accueil'], nav a[title='Bord'], nav a[title='Instructions'] {

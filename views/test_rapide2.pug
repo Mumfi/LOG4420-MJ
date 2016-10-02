@@ -1,9 +1,12 @@
-extends stat_layout
+extends layout
 
 block content
 
     section(class='test-content')
         h1 Quiz de HTML
+        
+        include extensionStat
+        
         form(action="./tableau_de_bord")
             fieldset
                 legend Question 2 : HTML stands for what?

@@ -1,10 +1,11 @@
-extends stat_layout
+extends layout
 
 block content
 
-    section
+    section(id="resultat-content")
         h1 Résultats de l'examen :
-        p Vous avez fini l'examen !
-        p Vous avez réussi 1 questions sur 2 questions
-        p Votre note finale est de : 50%
-        p: a(href='tableau_de_bord') Retour au tableau de bord
+        div
+            p Vous avez fini l'examen !
+            p Vous avez réussi 1 questions sur 2 questions
+            p Votre note finale est de : 50%
+        p(class='bouton-bleu'): a(href='tableau_de_bord') Retour au tableau de bord

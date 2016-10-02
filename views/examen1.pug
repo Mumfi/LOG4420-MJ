@@ -1,9 +1,12 @@
-extends stat_layout
+extends layout
 
 block content
 
     section(class='examen-content')
         h1 Examen de HTML
+        
+        include extensionStat
+        
         form(action="./examen2")
             fieldset
                 legend Question 1 : What of the following is a semantic element in HTML?

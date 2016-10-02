@@ -1,4 +1,4 @@
-extends stat_layout
+extends layout
 
 block content
     
@@ -18,6 +18,17 @@ block content
         h1 Tableau de bord
 
         div
+        
+            section(class="statsection")
+                h2 Statistiques :
+                table
+                    tr
+                        td Nombre de tests rapides réussis:
+                        td 4
+                    tr
+                        td Moyenne des examens:
+                        td 13/20
+
             section
                 h2 Test Rapide
                 p Pour commencer un test rapide :
