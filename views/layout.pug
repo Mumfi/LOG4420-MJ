@@ -7,9 +7,10 @@ html
   body
     nav
         ul#topnav
-            li: a#topnav(class=test, href="/") PAGE D'ACCUEIL
-            li: a#topnav(href="tableau_de_bord") TABLEAU DE BORD
-            li: a#topnav(href="instructions") PAGE D'INSTRUCTION
+            li: a#topnav(class=test, href="/", title=Accueil) PAGE D'ACCUEIL
+            li: a#topnav(href="tableau_de_bord", title=Bord) TABLEAU DE BORD
+            li: a#topnav(href="instructions", title=Instructions) PAGE D'INSTRUCTION
+
     block content
     
   footer

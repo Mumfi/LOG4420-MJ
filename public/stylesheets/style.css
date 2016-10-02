@@ -37,7 +37,14 @@ section#statsection {
     width: 250px;
     height: 190px;
     background-color: darkgrey;
+    display: inline;
     border: solid 1px black;
 }
 
+img#instructions {
+    float: right;
+}
+
+nav a[title='Accueil'], nav a[title='Bord'], nav a[title='Instructions'] {
+    background-color: cadetblue;
 }
