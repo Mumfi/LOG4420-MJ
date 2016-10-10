@@ -34,15 +34,5 @@ router.get('/test_rapide2', function(req, res, next) {
   res.render('test_rapide2', { title: 'Test Rapide' });
 });
 
-/*router.get('/bord', function(req, res, next) {
-  res.render('bord', { title: 'Tableau de bord', Accueil:'', Bord:'Bord', Instructions:'' });
-});
-router.get('/resultats', function(req, res, next) {
-  res.render('resultats', { title: 'Résultats' });
-});
-
-router.get('/instructions', function(req, res, next) {
-  res.render('instructions', { title: 'Instructions', Accueil:'', Bord:'', Instructions:'Instructions' });
-});*/
 
 module.exports = router;
