@@ -14,25 +14,18 @@ router.get('/instructions', function(req, res, next) {
   res.render('instructions', { title: 'Instructions des quiz', Accueil:'', Bord:'', Instructions:'Instructions' });
 });
 
-router.get('/examen1', function(req, res, next) {
-  res.render('examen1', { title: 'Examen' });
-});
-
-router.get('/examen2', function(req, res, next) {
-  res.render('examen2', { title: 'Examen' });
+router.get('/examen', function(req, res, next) {
+  res.render('examen', { title: 'Examen' });
 });
 
 router.get('/resultats', function(req, res, next) {
   res.render('resultats', { title: 'Résultats de l\'examen' });
 });
 
-router.get('/test_rapide1', function(req, res, next) {
-  res.render('test_rapide1', { title: 'Test Rapide' });
+router.get('/test_rapide', function(req, res, next) {
+  res.render('test_rapide', { title: 'Test Rapide' });
 });
 
-router.get('/test_rapide2', function(req, res, next) {
-  res.render('test_rapide2', { title: 'Test Rapide' });
-});
 
 
 module.exports = router;

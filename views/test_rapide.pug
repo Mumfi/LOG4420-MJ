@@ -1,0 +1,42 @@
+extends layout
+
+block content
+
+    section(class='test-content')
+        h1 Quiz de HTML
+        
+        include extensionStat
+        
+        form(action="./test_rapide")
+            fieldset
+                legend Question
+                p(class="question")
+                label(for="1")
+                    input(id="1",type="checkbox") 
+                label(for="2")
+                    input(id="2", type="checkbox")  
+                label(for="3")
+                    input(id="3", type="checkbox")
+                label(for="4")
+                    input(id="4", type="checkbox")
+            p: input(
+                      type="submit"
+                      value="Question suivante"
+                    )
+                    
+            script(type="appplication/javascript").
+                $(document).ready(function() {
+                    $.getJSON( "ajax/test.json", function( data ) {
+                        $('.question').html(data.question)
+                        $('[for=1]).append(data.reponses[0])
+                        $('[for=2]).append(data.reponses[1])
+                        $('[for=3]).append(data.reponses[2])
+                        $('[for=4]).append(data.reponses[3])
+                    });
+                });
+            
+            
+            
+        include extensionTest
+
+
