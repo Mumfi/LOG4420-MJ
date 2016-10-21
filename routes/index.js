@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Accueil des quiz', Accueil:'Accueil', Bord:'', Instructions:'' });
@@ -26,6 +27,12 @@ router.get('/test_rapide', function(req, res, next) {
   res.render('test_rapide', { title: 'Test Rapide' });
 });
 
+
+router.get('/nouvelle_question', function(req, res, next) {
+    var numero = Math.trunc(Math.random() * questions.length);
+    console.log(questions[numero]);
+    res.json(questions[numero]);
+});
 
 
 module.exports = router;

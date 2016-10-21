@@ -24,16 +24,29 @@ block content
                       value="Question suivante"
                     )
                     
-            script(type="appplication/javascript").
-                $(document).ready(function() {
-                    $.getJSON( "ajax/test.json", function( data ) {
-                        $('.question').html(data.question)
-                        $('[for=1]).append(data.reponses[0])
-                        $('[for=2]).append(data.reponses[1])
-                        $('[for=3]).append(data.reponses[2])
-                        $('[for=4]).append(data.reponses[3])
-                    });
+            script(type="application/javascript").
+                window.onload=function() {
+                
+                $.ajax({
+                
+                    type: "GET",
+                    url: "/nouvelle_question",
+                 
+                    error:function(msg, string){
+                        console.log( "Error !: " + string );
+                    },
+                 
+                    success:function(data){
+                        console.log(data.question);
+                        $('.question').html(data.question);
+                        $('[for=1]').text(data.reponses[0]);
+                        $('[for=2]').text(data.reponses[1]);
+                        $('[for=3]').text(data.reponses[2]);
+                        $('[for=4]').text(data.reponses[3]);
+                    }
                 });
+              
+                };
             
             
             
