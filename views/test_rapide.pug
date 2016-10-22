@@ -7,47 +7,51 @@ block content
         
         include extensionStat
         
-        form(action="./test_rapide")
+        form(action="")
             fieldset
                 legend Question
                 p(class="question")
-                label(for="1")
-                    input(id="1",type="checkbox") 
+                label(for="1") 
                 label(for="2")
-                    input(id="2", type="checkbox")  
                 label(for="3")
-                    input(id="3", type="checkbox")
                 label(for="4")
-                    input(id="4", type="checkbox")
             p: input(
                       type="submit"
                       value="Question suivante"
                     )
                     
             script(type="application/javascript").
+            
+                function nouvelleQuestion(){
+                    $.ajax({
+                        type: "GET",
+                        url: "/ajax/nouvelle_question_test",
+
+                        error:function(msg, string){
+                            console.log( "Error !: " + string );
+                        },
+
+                        success:function(data){
+                            $('.question').html(data.question);
+                            $('[for=1]').html("<input id=\"1\" type=\"checkbox\">" + data.reponses[0] + "</label>");
+                            $('[for=2]').html("<input id=\"2\" type=\"checkbox\">" + data.reponses[1] + "</label>");
+                            $('[for=3]').html("<input id=\"3\" type=\"checkbox\">" + data.reponses[2] + "</label>");
+                            $('[for=4]').html("<input id=\"4\" type=\"checkbox\">" + data.reponses[3] + "</label>");
+                        }
+                    });
+                }
+            
                 window.onload=function() {
                 
-                $.ajax({
+                    nouvelleQuestion();
                 
-                    type: "GET",
-                    url: "/nouvelle_question",
-                 
-                    error:function(msg, string){
-                        console.log( "Error !: " + string );
-                    },
-                 
-                    success:function(data){
-                        console.log(data.question);
-                        $('.question').html(data.question);
-                        $('[for=1]').text(data.reponses[0]);
-                        $('[for=2]').text(data.reponses[1]);
-                        $('[for=3]').text(data.reponses[2]);
-                        $('[for=4]').text(data.reponses[3]);
-                    }
-                });
-              
-                };
-            
+                    $("form").submit(function(event){
+                        event.preventDefault();
+                        nouvelleQuestion();
+                    });
+                }
+                
+
             
             
         include extensionTest

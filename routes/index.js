@@ -28,11 +28,4 @@ router.get('/test_rapide', function(req, res, next) {
 });
 
 
-router.get('/nouvelle_question', function(req, res, next) {
-    var numero = Math.trunc(Math.random() * questions.length);
-    console.log(questions[numero]);
-    res.json(questions[numero]);
-});
-
-
 module.exports = router;

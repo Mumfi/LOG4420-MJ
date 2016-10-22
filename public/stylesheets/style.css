@@ -360,8 +360,6 @@ li a#topnav:hover {
 }
 
 
-
-
 img#instructions {
     float: right;
     margin-left: 20px;
@@ -370,4 +368,12 @@ img#instructions {
 
 nav a[title='Accueil'], nav a[title='Bord'], nav a[title='Instructions'] {
     background-color: #79cbf1;
+}
+
+.test-content .question{
+    line-height: 20px;
+}
+
+.examen-content .question{
+    line-height: 20px;
 }
