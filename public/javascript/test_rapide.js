@@ -20,5 +20,6 @@ window.onload=function() {
     $("form").submit(function(event){
         event.preventDefault();
         nouvelleQuestion();
+        replacerReponse()
     });
 }

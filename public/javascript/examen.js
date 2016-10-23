@@ -75,6 +75,7 @@ window.onload=function() {
         if (num_question <= nb_question){
             event.preventDefault();
             nouvelleQuestion(theme, num_question);
+            replacerReponse()
         }
     });
     }

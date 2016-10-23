@@ -231,19 +231,32 @@ legend {
     justify-content: space-around;
 }
 
-.reponses p{
-    flex-basis: 50%;
+.reponses div{
+    flex-basis: 34%;
     text-align: center;
     line-height: 15px;
-    cursor: move;
+    padding: 10px 0;
+    margin: 15px 0;
+    background-color: lightgrey;
+    border-radius: 15px;
 }
 
-.zone_reponse{
+.dropzone{
     border: 3px dotted lightgray;
     border-radius: 5px;
     width: 80%;
     height: 80px;
     margin: 20px auto;
+}
+
+.dropzone div{
+    padding: 10px 0;
+    line-height: normal;
+    width: 40%;
+    margin: 15px auto;
+    background-color: lightgrey;
+    border-radius: 15px;
+    text-align: center;
 }
 
 .question{

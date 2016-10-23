@@ -7,24 +7,13 @@ block content
         
         include extensionStat
         
-        form(action="./resultats")
-            fieldset
-                legend
-                p(class="question")
-                div(class="reponses")
-                    p(id="1", draggable="true")
-                    p(id="2", draggable="true")
-                    p(id="3", draggable="true")
-                    p(id="4", draggable="true")
-                div(class="zone_reponse")
-                    p(class="aide") Faites glisser une réponse ici
-            p: input(
-                      type="submit"
-                      value="Question suivante"
-                    )
+        include extensionTests
             
             
-        include extensionExamen
+        section(class="clear")
+            h2 Note actuelle :
+            p 2 points
+        p(class='bouton-bleu'): a(href="tableau_de_bord") Abandon de l'examen
         
         
         script(type="application/javascript", src="/javascript/test.js")

@@ -1,0 +1,15 @@
+form(action="./resultats")
+            fieldset
+                legend Question
+                p(class="question")
+                div(class="reponses")
+                    div(id="1", draggable="true", ondragstart="event.dataTransfer.setData('text/plain',null)")
+                    div(id="2", draggable="true", ondragstart="event.dataTransfer.setData('text/plain',null)")
+                    div(id="3", draggable="true", ondragstart="event.dataTransfer.setData('text/plain',null)")
+                    div(id="4", draggable="true", ondragstart="event.dataTransfer.setData('text/plain',null)")
+                div(class="dropzone")
+                    p(class="aide") Faites glisser une réponse ici
+            p: input(
+                      type="submit"
+                      value="Question suivante"
+                    )

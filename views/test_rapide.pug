@@ -1,30 +1,18 @@
 extends layout
 
 block content
-
     
     section(class='test-content')
         h1 Test rapide
         
         include extensionStat
         
-        form(action="#")
-            fieldset
-                legend Question
-                p(class="question")
-                div(class="reponses")
-                    p(id="1", draggable="true")
-                    p(id="2", draggable="true")
-                    p(id="3", draggable="true")
-                    p(id="4", draggable="true")
-                div(class="zone_reponse")
-                    p(class="aide") Faites glisser une réponse ici
-            p: input(
-                      type="submit"
-                      value="Question suivante"
-                    )
+        include extensionTests
         
-        include extensionTest
+        section(class="clear")
+            h2 Note actuelle :
+            p 0 points
+        p(class='bouton-bleu'): a(href="tableau_de_bord") Retour au tableau de bord
         
         script(type="application/javascript", src="/javascript/test.js")
         script(type="application/javascript", src="/javascript/test_rapide.js")
