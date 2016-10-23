@@ -2,58 +2,30 @@ extends layout
 
 block content
 
+    
     section(class='test-content')
-        h1 Quiz de HTML
+        h1 Test rapide
         
         include extensionStat
         
-        form(action="")
+        form(action="#")
             fieldset
                 legend Question
                 p(class="question")
-                label(for="1") 
-                label(for="2")
-                label(for="3")
-                label(for="4")
+                div(class="reponses")
+                    p(id="1", draggable="true")
+                    p(id="2", draggable="true")
+                    p(id="3", draggable="true")
+                    p(id="4", draggable="true")
+                div(class="zone_reponse")
+                    p(class="aide") Faites glisser une réponse ici
             p: input(
                       type="submit"
                       value="Question suivante"
                     )
-                    
-            script(type="application/javascript").
-            
-                function nouvelleQuestion(){
-                    $.ajax({
-                        type: "GET",
-                        url: "/ajax/nouvelle_question_test",
-
-                        error:function(msg, string){
-                            console.log( "Error !: " + string );
-                        },
-
-                        success:function(data){
-                            $('.question').html(data.question);
-                            $('[for=1]').html("<input id=\"1\" type=\"checkbox\">" + data.reponses[0] + "</label>");
-                            $('[for=2]').html("<input id=\"2\" type=\"checkbox\">" + data.reponses[1] + "</label>");
-                            $('[for=3]').html("<input id=\"3\" type=\"checkbox\">" + data.reponses[2] + "</label>");
-                            $('[for=4]').html("<input id=\"4\" type=\"checkbox\">" + data.reponses[3] + "</label>");
-                        }
-                    });
-                }
-            
-                window.onload=function() {
-                
-                    nouvelleQuestion();
-                
-                    $("form").submit(function(event){
-                        event.preventDefault();
-                        nouvelleQuestion();
-                    });
-                }
-                
-
-            
-            
+        
         include extensionTest
-
+        
+        script(type="application/javascript", src="/javascript/test.js")
+        script(type="application/javascript", src="/javascript/test_rapide.js")
 

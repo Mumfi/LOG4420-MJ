@@ -36,10 +36,6 @@ input[type=submit]:hover{
 
 fieldset{
     border-radius: 15px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: flex-end;
     line-height: 0;
 }
 
@@ -47,7 +43,7 @@ fieldset legend{
     font-size: 16px;
 }
 
-fieldset p {
+fieldset .question {
     font-weight: 600;
     margin-top: 30px;
     margin-left: 20px;
@@ -228,9 +224,40 @@ legend {
 }
 
 
-.test-content label{
-    padding: 25px;
+.reponses{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
+
+.reponses p{
+    flex-basis: 50%;
+    text-align: center;
+    line-height: 15px;
+    cursor: move;
+}
+
+.zone_reponse{
+    border: 3px dotted lightgray;
+    border-radius: 5px;
+    width: 80%;
+    height: 80px;
+    margin: 20px auto;
+}
+
+.question{
+    line-height: 20px;
+}
+
+
+.aide{
+    font-style: italic;
+    color: lightgray;
+    text-align: center;
+    margin-top: 40px;
+}
+
 
 .bouton-bleu{
     margin-top: 40px;
@@ -370,10 +397,6 @@ nav a[title='Accueil'], nav a[title='Bord'], nav a[title='Instructions'] {
     background-color: #79cbf1;
 }
 
-.test-content .question{
-    line-height: 20px;
-}
 
-.examen-content .question{
-    line-height: 20px;
-}
+
+

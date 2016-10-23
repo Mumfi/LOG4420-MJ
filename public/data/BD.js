@@ -73,7 +73,7 @@ questions = [
         {
             domaine : "CSS",
             id : 7,
-            question : "A quoi sert la propriété de style \"border-radius\"",
+            question : "A quoi sert la propriété de style \"border-radius\" ?",
             reponses : [
                 "A appliquer une rotation à un encadré",
                 "A définir des angles précis pour les encadrés",
