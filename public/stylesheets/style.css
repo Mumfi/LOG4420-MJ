@@ -1,45 +1,44 @@
 body {
-  padding: 0;
-  margin: 0;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    padding: 0;
+    margin: 0;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
     color: #00B7FF;
 }
 
-h1{
+h1 {
     text-align: center;
     font-weight: normal;
     font-size: 32px;
 }
 
-h2{
+h2 {
     font-weight: 400;
     color: #79cbf1;
 }
 
-input[type=submit]{
+input[type=submit] {
     color: white;
-    text-decoration:inherit;
+    text-decoration: inherit;
     padding: 8px;
-    background: linear-gradient(#7abb59,#95e66d);
-    border-radius : 15px;
+    background: linear-gradient(#7abb59, #95e66d);
+    border-radius: 15px;
     border-style: none;
     font-size: 16px;
 }
 
-input[type=submit]:hover{
-    background: linear-gradient(#95e66d,#7abb59);
+input[type=submit]:hover {
+    background: linear-gradient(#95e66d, #7abb59);
 }
 
-
-fieldset{
+fieldset {
     border-radius: 15px;
     line-height: 0;
 }
 
-fieldset legend{
+fieldset legend {
     font-size: 16px;
 }
 
@@ -51,22 +50,22 @@ fieldset .question {
 }
 
 legend {
-    font-weight:600;
+    font-weight: 600;
 }
 
-#index-content img{
+#index-content img {
     display: block;
     margin-left: auto;
     margin-right: auto;
 }
 
-#index-content section{
+#index-content section {
     display: block;
     margin-left: 80px;
     margin-right: 80px;
 }
 
-#index-content section{
+#index-content section {
     border: solid 2px;
     border-color: #8a8a8a;
     border-radius: 15px;
@@ -78,83 +77,83 @@ legend {
     margin-right: 80px;
 }
 
-
-#tableau-content div{
-    border : solid 2px;
+#tableau-content div {
+    border: solid 2px;
     border-radius: 15px;
     border-color: #8a8a8a;
     margin: 15px;
     padding: 15px;
 }
 
-#tableau-content section{
-    margin-left : 40px;
+#tableau-content section {
+    margin-left: 40px;
     margin-bottom: 40px;
 }
 
-
-#tableau-content section a{
+#tableau-content section a {
     color: white;
-    text-decoration:inherit;
+    text-decoration: inherit;
     padding: 8px;
     margin: 50px;
-    background: linear-gradient(#7abb59,#95e66d);
-    border-radius : 15px;
+    background: linear-gradient(#7abb59, #95e66d);
+    border-radius: 15px;
     font-size: 16px;
 }
 
-#tableau-content section a:hover{
-    background: linear-gradient(#95e66d,#7abb59);
+#tableau-content section a:hover {
+    background: linear-gradient(#95e66d, #7abb59);
 }
 
-#tableau-content form{
-    width : 290px;
-    border : solid 2px;
+#tableau-content form {
+    width: 290px;
+    border: solid 2px;
     padding: 15px;
     border-radius: 15px;
     border-color: #95e66d;
     line-height: 40px;
-    
 }
 
-#tableau-content input[type=submit]{
-    margin:10px 0;
+#tableau-content input[type=submit] {
+    margin: 10px 0;
     margin-left: 90px;
 }
 
-#tableau-content input[type=submit]{
+#tableau-content input[type=submit] {
     color: white;
-    text-decoration:inherit;
+    text-decoration: inherit;
     padding: 8px;
-    background: linear-gradient(#7abb59,#95e66d);
-    border-radius : 15px;
+    background: linear-gradient(#7abb59, #95e66d);
+    border-radius: 15px;
     border-style: none;
     font-size: 16px;
-    margin:10px 0;
+    margin: 10px 0;
     margin-left: 90px;
 }
 
-#tableau-content input[type=submit]:hover{
-    background: linear-gradient(#95e66d,#7abb59);
+#tableau-content input[type=submit]:hover {
+    background: linear-gradient(#95e66d, #7abb59);
 }
 
-#tableau-content .bouton-bleu{
+#tableau-content .bouton-bleu {
     margin-left: 40px;
 }
 
-#fond-opaque{
+#fond-opaque {
     display: none;
     position: fixed;
-    top:0; right:0; bottom:0; left:0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     background-color: rgba(0, 0, 0, 0.7);
     z-index: 1;
 }
 
-#fond-opaque:target{
+#fond-opaque:target {
     display: block;
 }
 
-#boite-modale{
+#boite-modale {
     background: #fff;
     padding: 20px;
     border: 20px solid #ddd;
@@ -166,17 +165,16 @@ legend {
     cursor: default;
 }
 
-
-
-#boite-modale:active{
+#boite-modale:active {
     pointer-events: none;
 }
 
-#boite-modale h2{
+#boite-modale h2 {
     margin-top: 0;
 }
 
-#boite-modale th, #boite-modale td {
+#boite-modale th,
+#boite-modale td {
     padding: 8px;
     text-align: left;
     color: black;
@@ -186,43 +184,41 @@ legend {
     background-color: #f5f5f5;
 }
 
-#instruction-content div{
-    border : solid 2px;
+#instruction-content div {
+    border: solid 2px;
     border-radius: 15px;
     border-color: #8a8a8a;
     margin: 80px 80px;
     padding: 15px;
 }
 
-#instruction-content section{
+#instruction-content section {
     margin: 40px 25px;
 }
 
-#instruction-content p{
+#instruction-content p {
     text-align: justify;
 }
 
-
-#resultat-content div{
+#resultat-content div {
     margin: 10px 30px;
     border: solid 2px #8a8a8a;
     border-radius: 15px;
     padding: 20px;
 }
 
-#resultat-content > p{
+#resultat-content > p {
     margin-left: 30px;
 }
 
-.test-content{
+.test-content {
     margin: 20px;
 }
 
-.test-content form{
+.test-content form {
     margin: 60px;
     line-height: 40px;
 }
-
 
 .reponses{
     display: flex;
@@ -271,42 +267,42 @@ legend {
     margin-top: 40px;
 }
 
-
-.bouton-bleu{
-    margin-top: 40px;
+.test-content label {
+    padding: 25px;
 }
 
-.bouton-bleu a{
+.bouton-bleu a {
     color: white;
-    text-decoration:inherit;
+    text-decoration: inherit;
     padding: 8px;
-    background: linear-gradient(#5b98b5,#7dd3fa);
-    border-radius : 15px;
+    background: linear-gradient(#5b98b5, #7dd3fa);
+    border-radius: 15px;
     font-size: 16px;
     margin-top: 40px;
 }
 
-.bouton-bleu a:hover{
-    background: linear-gradient(#7dd3fa,#5b98b5);
+.bouton-bleu a:hover {
+    background: linear-gradient(#7dd3fa, #5b98b5);
+}
+    
+.bouton-bleu {
+    margin-top: 40px;
 }
 
-
-.examen-content{
+.examen-content {
     margin: 20px;
 }
 
-.examen-content form{
+.examen-content form {
     margin: 60px;
     line-height: 40px;
 }
 
-
-.examen-content label{
+.examen-content label {
     padding: 25px;
 }
 
-
-footer{
+footer {
     color: white;
     background-color: #f15721;
     margin-top: 70px;
@@ -314,15 +310,14 @@ footer{
     padding-bottom: 7px;
     padding-left: 15px;
     line-height: 30px;
-    clear : both;
+    clear: both;
 }
-
 
 ul#topnav {
     overflow: hidden;
     list-style-type: none;
     padding: 0;
-    background-color:darkblue;
+    background-color: darkblue;
     margin-top: 0;
 }
 
@@ -342,12 +337,10 @@ li a#topnav:hover {
     background-color: #6cbd44;
 }
 
-
-.statsection h2{
+.statsection h2 {
     margin-top: 0;
     margin-bottom: 10px;
 }
-
 
 .statsection {
     font-size: 16px;
@@ -359,46 +352,41 @@ li a#topnav:hover {
     margin-top: 5%;
 }
 
-.statsection td{
+.statsection td {
     padding: 8px;
 }
 
 #tableau-content .statsection {
     position: absolute;
-    top: 50%; 
+    top: 50%;
     right: 6%;
 }
 
-.clear{
+.clear {
     clear: both;
 }
 
-@media screen and (max-width: 1100px){
+@media screen and (max-width: 1100px) {
     .statsection {
         font-size: 12px;
         padding: 10px;
         width: 120px;
         margin-left: 30px;
     }
-    
     #tableau-content .statsection {
         font-size: 14px;
         width: 140px;
     }
-
-    
 }
 
-@media screen and (min-width: 1100px){
+@media screen and (min-width: 1100px) {
     .statsection {
         font-size: 16px;
         padding: 20px;
         width: 320px;
         margin: 0 40px;
     }
-
 }
-
 
 img#instructions {
     float: right;
@@ -406,10 +394,8 @@ img#instructions {
     margin-bottom: 20px;
 }
 
-nav a[title='Accueil'], nav a[title='Bord'], nav a[title='Instructions'] {
+nav a[title='Accueil'],
+nav a[title='Bord'],
+nav a[title='Instructions'] {
     background-color: #79cbf1;
 }
-
-
-
-
