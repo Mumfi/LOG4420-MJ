@@ -9,12 +9,7 @@ block content
         
         include extensionTests
             
-            
-        section(class="clear")
-            h2 Note actuelle :
-            p 2 points
-        p(class='bouton-bleu'): a(href="tableau_de_bord") Abandon de l'examen
-        
+        p#abandon-examen.bouton-bleu: a(href="resultats") Abandon de l'examen
         
         script(type="application/javascript", src="/javascript/test.js")
         script(type="application/javascript", src="/javascript/examen.js")

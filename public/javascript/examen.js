@@ -79,3 +79,7 @@ window.onload=function() {
         }
     });
     }
+
+$("#abandon-examen").on("click", function() {
+    $("#div-resultats").html("<p> Vous avez abandonnez l'examen</p>");
+});

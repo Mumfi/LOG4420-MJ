@@ -4,8 +4,22 @@ block content
 
     section(id="resultat-content")
         h1 Résultats de l'examen :
-        div
-            p Vous avez fini l'examen !
-            p Vous avez réussi 1 questions sur 2 questions
-            p Votre note finale est de : 50%
-        p(class='bouton-bleu'): a(href='tableau_de_bord') Retour au tableau de bord
+        div#div-resultats
+            p 
+                | Vous avez fini l'examen en 
+                span#type-examen
+            p 
+                | Vous avez réussi 
+                span#questions-reussis 0
+                |  sur 
+                span#questions-totales 0
+                |  questions
+            p 
+                | Votre note finale est de : 
+                span#note-finale 0
+                |  %
+            p 
+                | Commentaire sur la note : 
+                span#commentaire Pas de commentaires
+        p#retour-au-tdb.bouton-bleu: a(href='tableau_de_bord') Retour au tableau de bord
+    script(type="application/javascript", src="/javascript/resultat.js")

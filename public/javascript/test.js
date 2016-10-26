@@ -1,4 +1,5 @@
 var bonne_reponse;
+var note_actuelle = 0;
 
 function miseAJourQuestion(data){
     $('.question').html(data.question);
@@ -85,13 +86,20 @@ var dragged;
               event.target.appendChild( dragged );
               if(testerReponse($(dragged).attr("id"))){
                   $(".dropzone div").css("background-color", "#95e66d");
+                  miseAJourNoteActuelle();
               }else{
                   $(".dropzone div").css("background-color", "#f55f2b");
               }
               $('[draggable=true]').attr("draggable","false");
+              
           }
       }, 
       false
   );
 
+function miseAJourNoteActuelle() {
+    note_actuelle++;
+    sessionStorage.setItem("note_actuelle", note_actuelle);
+    $("#note-actuelle").text(note_actuelle);
+}
 
