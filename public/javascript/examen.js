@@ -78,8 +78,8 @@ window.onload=function() {
             replacerReponse()
         }
     });
-    }
+}
 
-$("#abandon-examen").on("click", function() {
-    $("#div-resultats").html("<p> Vous avez abandonnez l'examen</p>");
-});
+    $("#abandon-examen a").click(function(){
+        sessionStorage.setItem("note_actuelle", 0);
+    });
