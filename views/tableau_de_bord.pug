@@ -60,18 +60,12 @@ block content
                     tr
                         td Moyenne des examens:
                         td 13/20
+                p(class='bouton-bleu'): a(href="#") Remise à zéro
                         
             p(class='bouton-bleu'): a(href="#fond-opaque") Détails
             
+    script(type="application/javascript", src="/javascript/test.js")
+    script(type="application/javascript", src="/javascript/tableau_de_bord.js")
+
             
-    script(type="application/javascript").
-            window.onload=function() {
-            
-                $("form").submit(function(){
-                    sessionStorage.setItem("theme", $("#theme").val());
-                    sessionStorage.setItem("nb_question", $("#nb_question").val());
-                    sessionStorage.setItem("note_actuelle", 0);
-                });
-                        
-            }
 

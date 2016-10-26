@@ -271,7 +271,7 @@ legend {
     padding: 25px;
 }
 
-.bouton-bleu a {
+.bouton-bleu a, #tableau-content .bouton-bleu a {
     color: white;
     text-decoration: inherit;
     padding: 8px;
@@ -281,11 +281,11 @@ legend {
     margin-top: 40px;
 }
 
-.bouton-bleu a:hover {
+.bouton-bleu a:hover, #tableau-content .bouton-bleu a:hover {
     background: linear-gradient(#7dd3fa, #5b98b5);
 }
     
-.bouton-bleu {
+.bouton-bleu, #tableau-content .bouton-bleu {
     margin-top: 40px;
 }
 
