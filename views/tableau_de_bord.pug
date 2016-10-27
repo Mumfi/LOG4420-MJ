@@ -7,20 +7,22 @@ block content
                 div(id='boite-modale')
                     h2 Notes obtenues aux examens
                     table
-    
+                        tr
+                            td Résultat du test 1 :
+                            td 5
+                        tr
+                            td Résultat du test 2 :
+                            td 1
     
     section(id='tableau-content')
         h1 Tableau de bord
 
         div
-        
-            
-
             section
                 h2 Test Rapide
                 p Pour commencer un test rapide :
                 br
-                a(href="test_rapide") Cliquez ici
+                a#test-rapide(href="test_rapide") Cliquez ici
             section
                 h2 Examen
                 p Pour commencer un examen, veuillez remplir le formulaire ci-dessous :
@@ -42,10 +44,10 @@ block content
                           required
                           )
                     input(
+                          id="demarrer"
                           type="submit"
                           value="Démarrer"
                           )
-                          
             section(class="statsection")
                 h2 Statistiques :
                 table
@@ -54,13 +56,12 @@ block content
                         td 4
                     tr
                         td Moyenne des examens:
-                        td 13/20
+                        td 13/20            
                 p(class='bouton-bleu'): a(href="#") Remise à zéro
                         
             p(class='bouton-bleu'): a(href="#fond-opaque") Détails
             
-    script(type="application/javascript", src="/javascript/test.js")
+    
     script(type="application/javascript", src="/javascript/tableau_de_bord.js")
-
-            
+    script(type="application/javascript", src="/javascript/test.js")
 

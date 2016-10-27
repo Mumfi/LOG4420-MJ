@@ -1,5 +1,8 @@
 var bonne_reponse;
 var note_actuelle = 0;
+var questions_totale = 0;
+var old;
+var update;
 
 function miseAJourQuestion(data){
     $('.question').html(data.question);
@@ -90,6 +93,18 @@ var dragged;
               }else{
                   $(".dropzone div").css("background-color", "#f55f2b");
               }
+              
+                    if (sessionStorage.getItem("isExamen") == "false") {
+                        alert(sessionStorage.getItem("isExamen"));
+                      old = parseInt(localStorage.getItem("nombre_tests"));
+                      update = old + 1;
+                      localStorage.setItem("nombre_tests", "" + update);
+                      console.log("" + update + " " + old)
+                      
+                  }
+                  
+                alert(localStorage.getItem("nombre_tests"));
+              
               $('[draggable=true]').attr("draggable","false");
               
           }

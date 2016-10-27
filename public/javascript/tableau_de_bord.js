@@ -9,6 +9,7 @@ window.onload=function() {
     $(".statsection a").click(function(e){
         e.preventDefault();
         localStorage.clear();
+
         localStorage.setItem("nb_examen",0);
         $('#boite-modale table tr').remove();
     });
@@ -26,4 +27,16 @@ window.onload=function() {
         }
         
     }
+
+    });        
+    
+    $("#demarrer").on("click", function() {
+        sessionStorage.setItem("isExamen", "true");
+
+    });
+    
+    $("#test-rapide").on("click", function() {
+        sessionStorage.setItem("isExamen", "false");
+    });              
+
 }

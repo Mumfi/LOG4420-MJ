@@ -29,6 +29,22 @@ window.onload = function () {
     localStorage.setItem("nb_examen", nb_examen);
     localStorage.setItem("Examen."+nb_examen,info_exam);
 
+    }               
+                         
+    if (sessionStorage.getItem("isExamen") == "false") {
+        var old = parseInt(sessionStorage.getItem("note_actuelle"));
+        var update = old + 1;
+        localStorage.setItem("reussi_tests", "" + update);
+    
+    $("#rapides-reussis").text("ds");
+        
+    $("#rapides-effectue").text(localStorage.getItem("reussi_tests"));
 }
 
+}
+
+$("#retour-au-tdb").on("click", function() {
+    localStorage.setItem("resultat_" + sessionStorage.getItem("theme"), parseInt(sessionStorage.getItem("note_actuelle")) + parseInt(localStorage.getItem("resultat_" + sessionStorage.getItem("theme"))));
+                         
+});
 
