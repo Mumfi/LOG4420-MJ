@@ -25,18 +25,7 @@ window.onload=function() {
             var info_examen = JSON.parse(localStorage.getItem("Examen."+i));
             $('#boite-modale table').append("<tr><td>Examen " + info_examen.num + " - " + info_examen.theme + "</td><td>"+ info_examen.nb_bonne_rep + "/" + info_examen.nb_reponse + "</td></tr>");
         }
-        
     }
 
-    });        
-    
-    $("#demarrer").on("click", function() {
-        sessionStorage.setItem("isExamen", "true");
-
-    });
-    
-    $("#test-rapide").on("click", function() {
-        sessionStorage.setItem("isExamen", "false");
-    });              
-
+    $(".moyenne_exam").text(localStorage.getItem("moyenne_examen")+"%");
 }
