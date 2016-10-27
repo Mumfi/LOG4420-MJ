@@ -1,4 +1,5 @@
 window.onload = function () {
+    
     $("#type-examen").text(sessionStorage.getItem("theme"));
     $("#questions-reussis").text(sessionStorage.getItem("note_actuelle"));
     $("#questions-totales").text(sessionStorage.getItem("nb_question"));
@@ -29,22 +30,14 @@ window.onload = function () {
     localStorage.setItem("nb_examen", nb_examen);
     localStorage.setItem("Examen."+nb_examen,info_exam);
 
-    }               
-                         
-    if (sessionStorage.getItem("isExamen") == "false") {
-        var old = parseInt(sessionStorage.getItem("note_actuelle"));
-        var update = old + 1;
-        localStorage.setItem("reussi_tests", "" + update);
+
+    var moyenne = 0;
+    for (i=1;i<=nb_examen;i++){
+        var info_examen = JSON.parse(localStorage.getItem("Examen."+i));
+        moyenne = moyenne + (info_examen.nb_bonne_rep/info_examen.nb_reponse*100);
+    }
+    moyenne = moyenne / nb_examen;
     
-    $("#rapides-reussis").text("ds");
-        
-    $("#rapides-effectue").text(localStorage.getItem("reussi_tests"));
-}
-
-}
-
-$("#retour-au-tdb").on("click", function() {
-    localStorage.setItem("resultat_" + sessionStorage.getItem("theme"), parseInt(sessionStorage.getItem("note_actuelle")) + parseInt(localStorage.getItem("resultat_" + sessionStorage.getItem("theme"))));
-                         
-});
+    localStorage.setItem("moyenne_examen", Math.floor(moyenne));
+}               
 
