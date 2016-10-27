@@ -18,14 +18,17 @@ window.onload = function () {
     }
     else if (pourcentage > 75) {
         $("#commentaire").text("Très bien");
-    }               
+    }
+    
+    var nb_examen = Number(localStorage.getItem("nb_examen"))+1;
+    var info_exam = JSON.stringify({num : nb_examen,
+                     theme : sessionStorage.getItem("theme"),
+                     nb_bonne_rep : sessionStorage.getItem("note_actuelle"),
+                     nb_reponse :sessionStorage.getItem("nb_question")
+                    });
+    localStorage.setItem("nb_examen", nb_examen);
+    localStorage.setItem("Examen."+nb_examen,info_exam);
+
 }
 
 
-
-$("#retour-au-tdb").on("click", function() {
-    localStorage.setItem("resultat_" + sessionStorage.getItem("theme"), parseInt(sessionStorage.getItem("note_actuelle")) + parseInt(localStorage.getItem("resultat_html")));
-                         
-                         
-    console.log(localStorage.getItem("resultat_html"));
-});
