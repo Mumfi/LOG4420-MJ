@@ -7,12 +7,6 @@ block content
                 div(id='boite-modale')
                     h2 Notes obtenues aux examens
                     table
-                        tr
-                            td Résultat du test 1 :
-                            td 5
-                        tr
-                            td Résultat du test 2 :
-                            td 1
     
     section(id='tableau-content')
         h1 Tableau de bord
@@ -51,16 +45,30 @@ block content
             section(class="statsection")
                 h2 Statistiques :
                 table
-                    tr
-                        td Nombre de tests rapides réussis:
-                        td 4
-                    tr
-                        td Moyenne des examens:
-                        td(class="moyenne_exam") 
+                   table
+                        tr
+                            td Nombre de tests rapides réussis:
+                            td(class="moyenne_test_rapide")
+                        tr
+                            td Moyenne du test HTML:
+                            td(class="moyenne_HTML")
+
+                        tr
+                            td Moyenne du test CSS:
+                            td(class="moyenne_CSS")
+
+                        tr
+                            td Moyenne du test Javascript:
+                            td(class="moyenne_JS")
+
+                        tr
+                            td Moyenne des examens:
+                            td(class="moyenne_exam")
 
                 p(class='bouton-bleu'): a(href="#") Remise à zéro
                         
             p(class='bouton-bleu'): a(href="#fond-opaque") Détails
-            
+    
+    script(type="application/javascript", src="/javascript/stat.js")
     script(type="application/javascript", src="/javascript/tableau_de_bord.js")
 

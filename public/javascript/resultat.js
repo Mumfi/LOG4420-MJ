@@ -31,13 +31,6 @@ window.onload = function () {
     localStorage.setItem("Examen."+nb_examen,info_exam);
 
 
-    var moyenne = 0;
-    for (i=1;i<=nb_examen;i++){
-        var info_examen = JSON.parse(localStorage.getItem("Examen."+i));
-        moyenne = moyenne + (info_examen.nb_bonne_rep/info_examen.nb_reponse*100);
-    }
-    moyenne = moyenne / nb_examen;
-    
-    localStorage.setItem("moyenne_examen", Math.floor(moyenne));
+    calcul_Moyenne();
 }               
 

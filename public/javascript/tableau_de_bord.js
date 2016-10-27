@@ -1,4 +1,6 @@
 window.onload=function() {
+    
+    mise_A_Jour_Stat();
             
     $("form").submit(function(){
         sessionStorage.setItem("theme", $("#theme").val());
@@ -11,11 +13,16 @@ window.onload=function() {
         localStorage.clear();
 
         localStorage.setItem("nb_examen",0);
+        localStorage.setItem("nb_question_rapide",0);
+        localStorage.setItem("nb_question_rapide_reussie",0);
         $('#boite-modale table tr').remove();
+        mise_A_Jour_Stat();
     });
        
    if(localStorage.length==0){
        localStorage.setItem("nb_examen",0);
+       localStorage.setItem("nb_question_rapide",0);
+       localStorage.setItem("nb_question_rapide_reussie",0);
    }
     
     var nb_examen = localStorage.getItem("nb_examen");
@@ -23,9 +30,8 @@ window.onload=function() {
     if (nb_examen>length){
         for (i=length+1; i<=nb_examen; i++){
             var info_examen = JSON.parse(localStorage.getItem("Examen."+i));
-            $('#boite-modale table').append("<tr><td>Examen " + info_examen.num + " - " + info_examen.theme + "</td><td>"+ info_examen.nb_bonne_rep + "/" + info_examen.nb_reponse + "</td></tr>");
+            $('#boite-modale table').append("<tr><td>Examen " + info_examen.num + " - " + info_examen.theme + " :</td><td>"+ info_examen.nb_bonne_rep + "/" + info_examen.nb_reponse + "</td></tr>");
         }
     }
 
-    $(".moyenne_exam").text(localStorage.getItem("moyenne_examen")+"%");
 }

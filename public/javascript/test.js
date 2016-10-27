@@ -92,21 +92,12 @@ var dragged;
                   miseAJourNoteActuelle();
               }else{
                   $(".dropzone div").css("background-color", "#f55f2b");
-              }
-              
-                    if (sessionStorage.getItem("isExamen") == "false") {
-                        alert(sessionStorage.getItem("isExamen"));
-                      old = parseInt(localStorage.getItem("nombre_tests"));
-                      update = old + 1;
-                      localStorage.setItem("nombre_tests", "" + update);
-                      console.log("" + update + " " + old)
-                      
-                  }
-                  
-                alert(localStorage.getItem("nombre_tests"));
-              
+              } 
               $('[draggable=true]').attr("draggable","false");
-              
+              if ($(".test-content").length != 0){
+                    var nb_question = Number(localStorage.getItem("nb_question_rapide")) + 1;
+                    localStorage.setItem("nb_question_rapide",nb_question);
+              }
           }
       }, 
       false
@@ -116,5 +107,10 @@ function miseAJourNoteActuelle() {
     note_actuelle++;
     sessionStorage.setItem("note_actuelle", note_actuelle);
     $("#note-actuelle").text(note_actuelle);
+    if($(".test-content").length != 0){
+        var nb_reussie = Number(localStorage.getItem("nb_question_rapide_reussie")) + 1;
+        localStorage.setItem("nb_question_rapide_reussie",nb_reussie);
+    }
 }
 
+    

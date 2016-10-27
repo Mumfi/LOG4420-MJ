@@ -1,4 +1,5 @@
 function nouvelleQuestion(){
+    
     $.ajax({
         type: "GET",
         url: "/ajax/nouvelle_question_test",
@@ -14,12 +15,17 @@ function nouvelleQuestion(){
 }
             
 window.onload=function() {
+    
+    mise_A_Jour_Stat();
                 
     nouvelleQuestion();
                 
     $("form").submit(function(event){
         event.preventDefault();
         nouvelleQuestion();
-        replacerReponse()
+        replacerReponse();
+        mise_A_Jour_Stat();
     });
+    
+    
 }
