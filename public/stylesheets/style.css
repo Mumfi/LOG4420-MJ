@@ -403,3 +403,27 @@ nav a[title='Bord'],
 nav a[title='Instructions'] {
     background-color: #79cbf1;
 }
+
+#ajout-question-content form{
+    width: 80%;
+    border: solid 2px;
+    padding: 15px;
+    border-radius: 15px;
+    border-color: #95e66d;
+    line-height: 40px;
+    margin: 0 auto;
+}
+
+#ajout-question-content label{
+    margin-right: 10px;
+}
+
+#ajout-question-content #reponses div{
+    font-size: 12px;
+    margin-left: 20px;
+}
+
+#ajout-question-content input[name="question"], #ajout-question-content #reponses input{
+    width : 80%;
+}
+
