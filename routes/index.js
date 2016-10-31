@@ -2,23 +2,21 @@ var express = require('express');
 var router = express.Router();
 
 
-var mongoose = require( 'mongoose' );
-require('../lib/db');
-var Question = mongoose.model( 'Question' );
+
 
 
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Accueil des quiz', Accueil:'Accueil', Bord:'', Instructions:'' });
+  res.render('index', { title: 'Accueil des quiz', Accueil:'Accueil', Bord:'', Instructions:'', Question:'' });
 });
 
 router.get('/tableau_de_bord', function(req, res, next) {
-  res.render('tableau_de_bord', { title: 'Tableau de bord', Accueil:'', Bord:'Bord', Instructions:'' });
+  res.render('tableau_de_bord', { title: 'Tableau de bord', Accueil:'', Bord:'Bord', Instructions:'', Question:'' });
 });
 
 router.get('/instructions', function(req, res, next) {
-  res.render('instructions', { title: 'Instructions des quiz', Accueil:'', Bord:'', Instructions:'Instructions' });
+  res.render('instructions', { title: 'Instructions des quiz', Accueil:'', Bord:'', Instructions:'Instructions', Question:'' });
 });
 
 router.get('/examen', function(req, res, next) {
@@ -34,18 +32,9 @@ router.get('/test_rapide', function(req, res, next) {
 });
 
 router.get('/ajouter_question', function(req,res,next){
-   res.render('ajouter_question', {title : 'Ajouter une question'}) ;
+   res.render('ajouter_question', { title: 'Ajouter des questions', Accueil:'', Bord:'', Instructions:'', Question:'Question' }) ;
 });
 
-router.post('/submit_question',function(req,res,next){
-    new Question({
-        domaine : req.body.domaine,
-        question : req.body.question,
-        reponses : req.body.reponses,
-        bonne_reponse : req.body.bonne_reponse
-    }).save( function( err, todo, count ){
-        res.redirect( '/' );
-        });
-});
+
 
 module.exports = router;

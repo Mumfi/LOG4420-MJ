@@ -3,7 +3,8 @@ extends layout
 block content
     section(id='ajout-question-content')
             h1 Ajouter une question à la base de donnée
-            form(action="/submit_question", method="POST")
+            div(class="message_retour")
+            form(action="#")
                 label Domaine
                 select(name="domaine", required)
                         option(value="html") HTML
