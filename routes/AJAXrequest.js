@@ -1,9 +1,12 @@
 var express = require('express');
 var router = express.Router();
 
-var mongoose = require( 'mongoose' );
 require('../lib/db');
+
+var mongoose = require( 'mongoose' );
 var Question = mongoose.model( 'Question' );
+
+
 
 router.post('/submit_question',function(req,res,next){
     if (req.body.bonne_reponse <= 0 || req.body.bonne_reponse > req.body.reponses.length || req.body.reponses.length < 2 || req.body.reponses==""){
@@ -21,46 +24,35 @@ router.post('/submit_question',function(req,res,next){
 });
 
 
-/*require('../public/data/BD.js');
-
-var questionHTML=[];
-var questionCSS=[];
-var questionJS=[];
-
-    for(i=0;i<questions.length;i++){
-        if (questions[i].domaine=="HTML"){
-            questionHTML.push(questions[i]);
-        }
-        if (questions[i].domaine=="CSS"){
-            questionCSS.push(questions[i]);
-        }
-        if (questions[i].domaine=="JavaScript"){
-            questionJS.push(questions[i]);
-        }
-    }
-
-
 router.get('/nouvelle_question_test', function(req, res, next) {
-    var numero = Math.trunc(Math.random() * questions.length);
-    res.json(questions[numero]);
+    var question;
+    Question.findOneRandom(function(err, element){
+        res.json(element);
+    });
+    
 });
 
-
 router.get('/nouvelle_question_exam_HTML',function(req, res, next) {
-    var numero = Math.trunc(Math.random() * questionHTML.length);
-    res.json(questionHTML[numero]);
+    var filtre = { domaine: { $eq: ['html'] } };
+    Question.findRandom(filtre, {}, {count: 1},function(err, element){
+        res.json(element[0]);
+    });
 });
 
 router.get('/nouvelle_question_exam_CSS',function(req, res, next) {
-    var numero = Math.trunc(Math.random() * questionCSS.length);
-    res.json(questionCSS[numero]);
+    var filtre = { domaine: { $eq: ['css'] } };
+    Question.findRandom(filtre, {}, {count: 1},function(err, element){
+        res.json(element[0]);
+    });
 });
 
 router.get('/nouvelle_question_exam_JS',function(req, res, next) {
-    var numero = Math.trunc(Math.random() * questionJS.length);
-    res.json(questionJS[numero]);
+    var filtre = { domaine: { $eq: ['javascript'] } };
+    Question.findRandom(filtre, {}, {count: 1},function(err, element){
+        res.json(element[0]);
+    });
 });
-*/
+
 
 
 module.exports = router;

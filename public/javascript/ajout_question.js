@@ -13,7 +13,6 @@ function envoiQuestion(donnees){
             $(".message_retour").text(data);
             $("input:not([type=\"submit\"])").removeAttr("required");
             $("input:not([type=\"submit\"])").val("");
-            //$("input:not([type=\"submit\"])").attr("required","true");
         }
     });
 }
