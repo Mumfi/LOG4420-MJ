@@ -8,7 +8,7 @@ var Question = mongoose.model( 'Question' );
 
 
 
-router.post('/submit_question',function(req,res,next){
+router.post('/question',function(req,res,next){
     if (req.body.bonne_reponse <= 0 || req.body.bonne_reponse > req.body.reponses.length || req.body.reponses.length < 2 || req.body.question==""){
         res.status(400).send("Saisie de la nouvelle question invalide");
     }else{
@@ -23,6 +23,11 @@ router.post('/submit_question',function(req,res,next){
     }
 });
 
+router.delete('/question',function(req,res,next){
+    
+});
+
+
 router.post('/demande_nb_question',function(req,res,next){
     var theme = req.body.theme;
     var nb_question;
@@ -32,7 +37,6 @@ router.post('/demande_nb_question',function(req,res,next){
 });
 
 router.get('/nouvelle_question_test', function(req, res, next) {
-    var question;
     Question.findOneRandom(function(err, element){
         res.json(element);
     });

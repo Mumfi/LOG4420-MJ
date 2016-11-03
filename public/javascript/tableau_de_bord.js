@@ -2,7 +2,7 @@ function mise_A_Jour_Nb_Reponse_Possible(){
      var theme = $("#theme").val();
         $.ajax({
             type: "POST",
-            url: "/ajax/demande_nb_question",
+            url: "/ajax/question",
             data : 'theme=' + theme,
 
             error:function(msg, string){

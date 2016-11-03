@@ -6,10 +6,12 @@ var update;
 
 function miseAJourQuestion(data){
     $('.question').html(data.question);
-    $('#1').text(data.reponses[0]);
-    $('#2').text(data.reponses[1]);
-    $('#3').text(data.reponses[2]);
-    $('#4').text(data.reponses[3]);
+     $(".reponses").empty();
+    for (i=0;i<data.reponses.length;i++)
+    {
+        var num = i+1;
+        $(".reponses").append("<div id =\"" + num + "\" draggable=\"true\" ondragstart=\"event.dataTransfer.setData('text/plain',null)\">"+ data.reponses[i] + "</div>");
+    }
     bonne_reponse = data.bonne_reponse;
 }
 
