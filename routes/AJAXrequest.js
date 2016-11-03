@@ -9,7 +9,7 @@ var Question = mongoose.model( 'Question' );
 
 
 router.post('/submit_question',function(req,res,next){
-    if (req.body.bonne_reponse <= 0 || req.body.bonne_reponse > req.body.reponses.length || req.body.reponses.length < 2 || req.body.reponses==""){
+    if (req.body.bonne_reponse <= 0 || req.body.bonne_reponse > req.body.reponses.length || req.body.reponses.length < 2 || req.body.question==""){
         res.status(400).send("Saisie de la nouvelle question invalide");
     }else{
         new Question({
