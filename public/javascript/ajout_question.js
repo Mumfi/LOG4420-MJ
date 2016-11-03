@@ -2,7 +2,7 @@ function envoiQuestion(donnees){
     
     $.ajax({
         type: "POST",
-        url: "/ajax/submit_question",
+        url: "/questions",
         data : donnees,
 
         error:function(msg, string){
@@ -10,9 +10,16 @@ function envoiQuestion(donnees){
         },
 
         success:function(data){
-            $(".message_retour").text(data);
-            $("input:not([type=\"submit\"])").removeAttr("required");
-            $("input:not([type=\"submit\"])").val("");
+            $("form").css("display","none");
+            $(".message_retour").css("display","block");
+            $(".texte-id").text("ID : " + data.id);
+            $(".texte-domaine").text("Domaine : " + data.domaine);
+            $(".texte-question").text("Question : " + data.question);
+            $(".texte-bonne-rep").text("Numéro de la bonne réponse : " + data.bonne_reponse);
+            for (j=0;j<data.reponses.length;j++){
+                var num = j+1;
+                $(".texte-rep ul").append("<li> Réponse " + num + " : " + data.reponses[j] + "</li>")
+            }
         }
     });
 }
@@ -20,6 +27,8 @@ function envoiQuestion(donnees){
 
 
 window.onload=function() {
+    $(".texte-rep ul").empty;
+    $(".message_retour").css("display","none");
     $("[name=nb_reponse]").on('input', function() { 
         $("#reponses").empty();
         var nb_rep = $(this).val();
@@ -33,7 +42,7 @@ window.onload=function() {
         event.preventDefault();
         var donnees = $(this).serialize();
         envoiQuestion(donnees);
-        $("input:not([type=\"submit\"])").attr("required","true");
+        //$("input:not([type=\"submit\"])").attr("required","true");
     });
    
 }

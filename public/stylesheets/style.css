@@ -425,15 +425,16 @@ nav a[title='Accueil'], nav a[title='Bord'], nav a[title='Instructions'], nav a[
     width : 80%;
 }
 
-#ajout-question-content .message_retour{
-    margin: 0 auto;
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 30px;
-    color: #79cbf1;
-}
 
 #ajout-question-content .bouton-bleu{
     margin-left: 10%;
+}
+
+.message_retour{
+    margin-left: 15%;
+}
+
+.message_retour li{
+    float: none;
 }
 

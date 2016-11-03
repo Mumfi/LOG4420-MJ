@@ -36,6 +36,48 @@ router.get('/ajouter_question', function(req,res,next){
    res.render('ajouter_question', { title: 'Ajouter des questions', Accueil:'', Bord:'', Instructions:'', Question:'Question' }) ;
 });
 
+router.post('/questions',function(req,res,next){
+    if (req.body.bonne_reponse <= 0 || req.body.bonne_reponse > req.body.reponses.length || req.body.reponses.length < 2 || req.body.question==""){
+        res.status(400).send("Saisie de la nouvelle question invalide");
+    }else{
+        var question = new Question({
+            domaine : req.body.domaine,
+            question : req.body.question,
+            reponses : req.body.reponses,
+            bonne_reponse : req.body.bonne_reponse
+        });
+        Question.count({}, function(err , count){
+            question.id = count;
+            question.save( function( err, question, count ){
+                 res.send(question); 
+            });
+        });
+        
+        
+    }
+});
+
+router.get('/questions',function(req,res,next){
+    
+});
+
+router.get('/questions/:id',function(req,res,next){
+    var id_question = req.params.id;
+    console.log(id_question);
+    res.redirect("/");
+});
+
+router.delete('/questions',function(req,res,next){
+    
+});
+
+router.delete('/questions/:id',function(req,res,next){
+    var id_question = req.params.id;
+    /*collection.remove({ '_id' : userToDelete }, function(err) {
+        res.send((err === null) ? { msg: '' } : { msg:'error: ' + err });
+    });*/
+});
+
 
 
 module.exports = router;
