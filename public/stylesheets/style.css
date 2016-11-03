@@ -433,3 +433,7 @@ nav a[title='Accueil'], nav a[title='Bord'], nav a[title='Instructions'], nav a[
     color: #79cbf1;
 }
 
+#ajout-question-content .bouton-bleu{
+    margin-left: 10%;
+}
+

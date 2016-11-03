@@ -1,6 +1,24 @@
+function mise_A_Jour_Nb_Reponse_Possible(){
+     var theme = $("#theme").val();
+        $.ajax({
+            type: "POST",
+            url: "/ajax/demande_nb_question",
+            data : 'theme=' + theme,
+
+            error:function(msg, string){
+            },
+
+            success:function(data){
+                $("#nb_question").attr("max",data);
+            }
+        });
+}
+
+
 window.onload=function() {
     
     mise_A_Jour_Stat();
+    mise_A_Jour_Nb_Reponse_Possible();
             
     $("form").submit(function(){
         sessionStorage.setItem("theme", $("#theme").val());
@@ -33,5 +51,9 @@ window.onload=function() {
             $('#boite-modale table').append("<tr><td>Examen " + info_examen.num + " - " + info_examen.theme + " :</td><td>"+ info_examen.nb_bonne_rep + "/" + info_examen.nb_reponse + "</td></tr>");
         }
     }
+    
+    $("select[id=theme]").on('input', function() { 
+       mise_A_Jour_Nb_Reponse_Possible();
+    });
 
 }

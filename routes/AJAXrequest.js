@@ -23,6 +23,13 @@ router.post('/submit_question',function(req,res,next){
     }
 });
 
+router.post('/demande_nb_question',function(req,res,next){
+    var theme = req.body.theme;
+    var nb_question;
+    Question.count({domaine : theme}, function(err , count){
+      res.send(String(count));
+    });
+});
 
 router.get('/nouvelle_question_test', function(req, res, next) {
     var question;

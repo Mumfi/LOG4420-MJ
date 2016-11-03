@@ -1,9 +1,10 @@
 var express = require('express');
 var router = express.Router();
 
+require('../lib/db');
 
-
-
+var mongoose = require( 'mongoose' );
+var Question = mongoose.model( 'Question' );
 
 
 /* GET home page. */
