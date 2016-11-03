@@ -438,3 +438,7 @@ nav a[title='Accueil'], nav a[title='Bord'], nav a[title='Instructions'], nav a[
     float: none;
 }
 
+#retour-remise-zero{
+    text-align: center;
+    margin-top: 15px;
+}

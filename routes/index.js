@@ -57,26 +57,33 @@ router.post('/questions',function(req,res,next){
     }
 });
 
+/*
 router.get('/questions',function(req,res,next){
     
 });
 
 router.get('/questions/:id',function(req,res,next){
     var id_question = req.params.id;
-    console.log(id_question);
-    res.redirect("/");
-});
-
-router.delete('/questions',function(req,res,next){
     
 });
 
 router.delete('/questions/:id',function(req,res,next){
     var id_question = req.params.id;
-    /*collection.remove({ '_id' : userToDelete }, function(err) {
-        res.send((err === null) ? { msg: '' } : { msg:'error: ' + err });
-    });*/
 });
+
+*/
+
+router.delete('/questions',function(req,res,next){
+    Question.remove({},function(err) {
+            if (err) {
+                console.log(err);
+            } else {
+                res.send('success');
+            }
+    });
+});
+
+
 
 
 

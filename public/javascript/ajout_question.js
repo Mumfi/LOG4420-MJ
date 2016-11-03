@@ -6,7 +6,7 @@ function envoiQuestion(donnees){
         data : donnees,
 
         error:function(msg, string){
-            $(".message_retour").text("Il y a eu une erreur lors de la soumission de la question");
+            console.log(msg);
         },
 
         success:function(data){
@@ -42,7 +42,22 @@ window.onload=function() {
         event.preventDefault();
         var donnees = $(this).serialize();
         envoiQuestion(donnees);
-        //$("input:not([type=\"submit\"])").attr("required","true");
+    });
+    
+    $(".bouton-bleu").click(function(event){
+        event.preventDefault();
+         $.ajax({
+            type: "DELETE",
+            url: "/questions",
+
+            error:function(msg, string){
+                $("#retour-remise-zero").text("Il y a eu une erreur lors de la suppression des questions de la base de données.");
+            },
+
+            success:function(data){
+                $("#retour-remise-zero").text("La base de données à bien été vidée !");
+            }
+        });
     });
    
 }
