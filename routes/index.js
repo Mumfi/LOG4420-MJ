@@ -57,21 +57,6 @@ router.post('/questions',function(req,res,next){
     }
 });
 
-/*
-router.get('/questions',function(req,res,next){
-    
-});
-
-router.get('/questions/:id',function(req,res,next){
-    var id_question = req.params.id;
-    
-});
-
-router.delete('/questions/:id',function(req,res,next){
-    var id_question = req.params.id;
-});
-
-*/
 
 router.delete('/questions',function(req,res,next){
     Question.remove({},function(err) {
