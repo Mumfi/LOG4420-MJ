@@ -1,16 +1,18 @@
 var examens;
 var nb_examen = 0;
 
+
 //TODO 
 //Adjust to database
 //show nothing if database empty for each type
-function mise_A_Jour_Stat(){    
-    $(".moyenne_exam").text(moyenne+"%");
-    $(".moyenne_HTML").text(moyenneHTML+"%");
-    $(".moyenne_CSS").text(moyenneCSS+"%");
-    $(".moyenne_JS").text(moyenneJS+"%");
+function mise_A_Jour_Stat(){  
+    // NEW ---------
+//    $(".moyenne_exam").text(moyenne+"%");
+//    $(".moyenne_HTML").text(moyenneHTML+"%");
+//    $(".moyenne_CSS").text(moyenneCSS+"%");
+//    $(".moyenne_JS").text(moyenneJS+"%");
 
-        
+    // OLD -----------
 //    $(".moyenne_test_rapide").text(localStorage.getItem("nb_question_rapide_reussie") + "/" + localStorage.getItem("nb_question_rapide"));
     
 //    if (localStorage.getItem("moyenne_examen") == null){
@@ -42,13 +44,7 @@ function mise_A_Jour_Stat(){
 
 function calcul_Moyenne(){
 
-    var moyenne = 0;
-    var moyenneHTML = 0;
-    var nbHTML=0;
-    var moyenneCSS = 0;
-    var nbCSS=0;
-    var moyenneJS = 0;
-    var nbJS=0;
+    
         
     //TODO Doesn't include most recent examination made.
     for (i=0;i<=nb_examen;i++){
