@@ -6,8 +6,6 @@ require('../lib/db');
 var mongoose = require( 'mongoose' );
 var Question = mongoose.model( 'Question' );
 
-
-
 router.post('/demande_nb_question',function(req,res,next){
     var theme = req.body.theme;
     var nb_question;

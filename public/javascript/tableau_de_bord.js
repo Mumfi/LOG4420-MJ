@@ -2,7 +2,7 @@ function mise_A_Jour_Nb_Reponse_Possible(){
      var theme = $("#theme").val();
         $.ajax({
             type: "POST",
-            url: "/ajax/question",
+            url: "/questions",
             data : 'theme=' + theme,
 
             error:function(msg, string){
@@ -27,21 +27,14 @@ window.onload=function() {
     });
     
     $(".statsection a").click(function(e){
+        
         e.preventDefault();
-        localStorage.clear();
-
-        localStorage.setItem("nb_examen",0);
-        localStorage.setItem("nb_question_rapide",0);
-        localStorage.setItem("nb_question_rapide_reussie",0);
+         deleteExamens();
+        
         $('#boite-modale table tr').remove();
         mise_A_Jour_Stat();
     });
-       
-   if(localStorage.length==0){
-       localStorage.setItem("nb_examen",0);
-       localStorage.setItem("nb_question_rapide",0);
-       localStorage.setItem("nb_question_rapide_reussie",0);
-   }
+    
     
     var nb_examen = localStorage.getItem("nb_examen");
     var length = $('#boite-modale table tr').length;
@@ -57,3 +50,5 @@ window.onload=function() {
     });
 
 }
+                              
+

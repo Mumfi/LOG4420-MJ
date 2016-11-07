@@ -98,12 +98,30 @@ var dragged;
               $('[draggable=true]').attr("draggable","false");
               if ($(".test-content").length != 0){
                     var nb_question = Number(localStorage.getItem("nb_question_rapide")) + 1;
-                    localStorage.setItem("nb_question_rapide",nb_question);
+                    var nb = {
+                        nb_question_rapide : nb_question
+                    }
+                   miseAJourQuestionsRapides(nb); //{localStorage.setItem("nb_question_rapide//",nb_question);
               }
           }
       }, 
       false
   );
+
+function incrementRapide() {
+    $.ajax({
+        type: "POST",
+        url: "/statistiques/rapide",
+        data : nombre,
+
+        error:function(msg, string){
+            console.log(msg);
+        },
+
+        success:function(data){
+            alert("sd");}
+        });
+}
 
 function miseAJourNoteActuelle() {
     note_actuelle++;
@@ -111,8 +129,28 @@ function miseAJourNoteActuelle() {
     $("#note-actuelle").text(note_actuelle);
     if($(".test-content").length != 0){
         var nb_reussie = Number(localStorage.getItem("nb_question_rapide_reussie")) + 1;
-        localStorage.setItem("nb_question_rapide_reussie",nb_reussie);
+        var nb = {
+                        nb_question_rapide_reussie : nb_reussie
+                    }
+        miseAJourQuestionsRapides(nb);
+ //localStorage.setItem("nb_question_rapide//_reussie",nb_reussie);
     }
 }
+
+function miseAJourQuestionsRapides(nombre) {
+    $.ajax({
+        type: "POST",
+        url: "/statistiques/rapide",
+        data : nombre,
+
+        error:function(msg, string){
+            console.log(msg);
+        },
+
+        success:function(data){
+            alert("sd");}
+        });
+}
+
 
     

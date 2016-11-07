@@ -1,5 +1,4 @@
 window.onload = function () {
-    
     $("#type-examen").text(sessionStorage.getItem("theme"));
     $("#questions-reussis").text(sessionStorage.getItem("note_actuelle"));
     $("#questions-totales").text(sessionStorage.getItem("nb_question"));
@@ -21,16 +20,14 @@ window.onload = function () {
         $("#commentaire").text("Très bien");
     }
     
-    var nb_examen = Number(localStorage.getItem("nb_examen"))+1;
-    var info_exam = JSON.stringify({num : nb_examen,
-                     theme : sessionStorage.getItem("theme"),
+    //var nb_examen = Number(localStorage.getItem("nb_examen"))+1;
+    var info_exam = {theme : sessionStorage.getItem("theme"),
                      nb_bonne_rep : sessionStorage.getItem("note_actuelle"),
                      nb_reponse :sessionStorage.getItem("nb_question")
-                    });
-    localStorage.setItem("nb_examen", nb_examen);
-    localStorage.setItem("Examen."+nb_examen,info_exam);
+                    };
+   // localStorage.setItem("nb_examen", nb_examen);
+  //  localStorage.setItem("Examen."+nb_examen,info_exam);
+    ajouteExamenFini(info_exam);
 
-
-    calcul_Moyenne();
-}               
-
+    getExamensFini();
+}          

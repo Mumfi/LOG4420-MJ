@@ -5,7 +5,8 @@ require('../lib/db');
 
 var mongoose = require( 'mongoose' );
 var Question = mongoose.model( 'Question' );
-
+var Examen = mongoose.model( 'Examen' );
+var Rapide = mongoose.model( 'Rapide' );
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -52,9 +53,51 @@ router.post('/questions',function(req,res,next){
                  res.send(question); 
             });
         });
-        
-        
     }
+});
+
+router.post('/statistique/examen',function(req,res,next){
+        var examen = new Examen({
+            domaine : req.body.theme,
+            bonne_reponse : req.body.nb_bonne_rep,
+            totale_reponse : req.body.nb_reponse
+        });
+    Examen.count({}, function(err , count){
+            examen._id = count;
+            examen.save( function(err){
+                if (err)
+                return next(err);
+            });
+        });
+});
+
+router.get('/statistique/examen',function(req,res,next){
+         Examen.find(function(err, examens) {
+            if (err) {
+                res.send(err);
+            }
+            res.json(examens);
+        });
+});
+
+router.delete('/statistique/examen',function(req,res,next){
+         Examen.remove({},function(err) {
+            if (err) 
+                console.log(err);
+        });
+});
+
+
+router.post('/statistique/rapide',function(req,res,next){
+        var rapide = new Rapide({
+            _id : 1,
+            nb_reussi : req.body.nb_question_rapide_reussie,
+            nb_totale : req.body.nb_question_rapide
+        });
+        Rapide.update({_id:1}, rapide, {upsert:true}, function(err, result) {
+            if (err)
+                return next(err);
+        });
 });
 
 
@@ -63,12 +106,10 @@ router.delete('/questions',function(req,res,next){
             if (err) {
                 console.log(err);
             } else {
-                res.('success');
+                res('success');
             }
     });
 });
-
-
 
 
 
