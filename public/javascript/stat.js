@@ -6,27 +6,42 @@ function mise_A_Jour_Stat(){
     var moyennes = calcul_Moyenne()
     
     if (isNaN(moyennes.moyenne)){
-        $(".moyenne_exam").text("");
+        $(".moyenne_exam").text("-");
     }else{
         $(".moyenne_exam").text(moyennes.moyenne+"%");
     }
     
     if (isNaN(moyennes.moyenneHTML)){
-        $(".moyenne_HTML").text("");
+        $(".moyenne_HTML").text("-");
     }else{
         $(".moyenne_HTML").text(moyennes.moyenneHTML+"%");
     }
     
     if (isNaN(moyennes.moyenneCSS)){
-        $(".moyenne_CSS").text("");
+        $(".moyenne_CSS").text("-");
     }else{
         $(".moyenne_CSS").text(moyennes.moyenneCSS+"%");
     }
 
     if (isNaN(moyennes.moyenneJS)){
-        $(".moyenne_JS").text("");
+        $(".moyenne_JS").text("-");
     }else{
         $(".moyenne_JS").text(moyennes.moyenneJS+"%");
+    }
+    
+    getStatistiqueRapide();
+    
+    if (examens == ""){
+        $('#boite-modale table').append("<p>Rien à montrer. Bonne chance!</p>");
+    } else {
+        for (i=0; i<=nb_examen; i++){
+            try {
+            info_examen = examens[i]; 
+            $('#boite-modale table').append("<tr><td>Examen " + info_examen._id + " (" + info_examen.domaine + ")" + " :</td><td>"+ "Note :" + info_examen.bonne_reponse + "/" + info_examen.totale_reponse + "</td></tr>");
+            } catch (e) {
+                console.log(e);
+            }
+        }
     }
 }
 
@@ -40,31 +55,29 @@ function calcul_Moyenne(){
     var moyenneJS = 0;
     var nbJS=0;
     
-    misAjourExamensFini();            
+    misAjourExamensFini();    
     
     //TODO Doesn't include most recent examination made.
     for (i=0;i<=nb_examen;i++){
-        
-         try{
-            moyenne = moyenne + (examens[i].bonne_reponse / examens[i].totale_reponse * 100);
-            if (examens[i].domaine == "html"){
-                moyenneHTML = moyenneHTML + (examens[i].bonne_reponse / examens[i].totale_reponse * 100);
-                nbHTML++;
-            }
-            if (examens[i].domaine == "css"){
-                moyenneCSS = moyenneCSS + (examens[i].bonne_reponse / examens[i].totale_reponse * 100);
-                nbCSS++;
-            }
-            if (examens[i].domaine == "javascript"){
-                moyenneJS = moyenneJS + (examens[i].bonne_reponse / examens[i].totale_reponse * 100);
-                nbJS++;
-            }
-                     
-        }catch(e){
-            console.log("err",e)
+        try{
+        moyenne = moyenne + (examens[i].bonne_reponse / examens[i].totale_reponse * 100);
+            
+        if (examens[i].domaine == "html"){
+            moyenneHTML = moyenneHTML + (examens[i].bonne_reponse / examens[i].totale_reponse * 100);
+            nbHTML++;
+        }
+        if (examens[i].domaine == "css"){
+            moyenneCSS = moyenneCSS + (examens[i].bonne_reponse / examens[i].totale_reponse * 100);
+            nbCSS++;
+        }
+        if (examens[i].domaine == "javascript"){
+            moyenneJS = moyenneJS + (examens[i].bonne_reponse / examens[i].totale_reponse * 100);
+            nbJS++;
+        }      
+        }catch(err){
+            console.log("err",err)
         }
     }
-
         moyenne = Math.floor(moyenne / nb_examen);
         moyenneHTML = Math.floor(moyenneHTML/nbHTML);
         moyenneCSS = Math.floor(moyenneCSS/nbCSS);
@@ -84,6 +97,7 @@ function ajouteExamenFini(donnees) {
         },
 
         success:function(data){
+            alert("feasd");
             }
         });
 }
@@ -116,9 +130,13 @@ function getStatistiqueRapide() {
         },
 
         success:function(data){
-            statRapide = data; 
-            }
-        });
+            if (data[0] == null) {
+                $(".moyenne_test_rapide").text("-");
+            } else {
+               $(".moyenne_test_rapide").text(data[0].nb_reussie + " / " + data[0].nb_totale); 
+            }            
+        }
+    });
 }
 
 function deleteExamens() {
@@ -133,4 +151,18 @@ function deleteExamens() {
             }
         });
 }
+
+function deleteRapides() {
+         $.ajax({
+            type: "DELETE",
+            url: "/statistique/rapide",
+
+            error:function(msg, string){
+            },
+
+            success:function(data){
+            }
+        });
+}
+
 

@@ -102,10 +102,9 @@ var dragged;
                   }
               } 
               $('[draggable=true]').attr("draggable","false");
-//              if ($(".test-content").length != 0){
-//
-//                   
-//              }
+              if ($(".test-content").length != 0){
+                   getStatistiqueRapide();
+              }
           }
       }, 
       false
@@ -119,22 +118,17 @@ function miseAJourNoteActuelle() {
     }
 }
 
-function miseAJourQuestionsRapides(domaine) {
+function miseAJourQuestionsRapides(type) {
     
     $.ajax({
         type: "POST",
         url: "/statistique/rapide",
-        data: {'domaine': domaine},
+        data: {'type': type},
 
         error:function(msg, string){
             console.log(msg);
         },
 
-        success:function(data){
-            alert(data.nb_reussie);
-        }
+        success:function(data){}
         });
 }
-
-
-    
