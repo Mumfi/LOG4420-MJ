@@ -28,6 +28,4 @@ window.onload = function () {
    // localStorage.setItem("nb_examen", nb_examen);
   //  localStorage.setItem("Examen."+nb_examen,info_exam);
     ajouteExamenFini(info_exam);
-
-    getExamensFini();
 }          

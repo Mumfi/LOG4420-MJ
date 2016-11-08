@@ -88,17 +88,39 @@ router.delete('/statistique/examen',function(req,res,next){
 });
 
 
+
+
 router.post('/statistique/rapide',function(req,res,next){
         var rapide = new Rapide({
             _id : 1,
-            nb_reussi : req.body.nb_question_rapide_reussie,
-            nb_totale : req.body.nb_question_rapide
+            nb_reussie : 0,
+            nb_totale : 0
         });
-        Rapide.update({_id:1}, rapide, {upsert:true}, function(err, result) {
-            if (err)
-                return next(err);
+
+    if (req.body.domaine == "nb_reussie") {
+        Rapide.findOneAndUpdate({_id:1}, { $inc: { nb_reussie: 1, nb_totale: 1}}, {new : true}, function(err, res) {
+        if (err) { 
+            throw err; 
+        } 
+        });
+    } 
+    else if (req.body.domaine == "nb_totale")
+        Rapide.findOneAndUpdate({_id:1}, { $inc: { nb_totale: 1 }}, {new : true}, function(err) {
+        if (err) { 
+            return next(err); 
+        } 
         });
 });
+
+router.get('/statistique/rapide',function(req,res,next){
+         Rapide.find(function(err, rapides) {
+            if (err) {
+                res.send(err);
+            }
+            res.json(rapides);
+        });
+});
+
 
 
 router.delete('/questions',function(req,res,next){

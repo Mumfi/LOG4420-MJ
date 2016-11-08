@@ -1,51 +1,47 @@
 var examens;
 var nb_examen = 0;
 
-
-//TODO 
-//Adjust to database
-//show nothing if database empty for each type
 function mise_A_Jour_Stat(){  
-    // NEW ---------
-//    $(".moyenne_exam").text(moyenne+"%");
-//    $(".moyenne_HTML").text(moyenneHTML+"%");
-//    $(".moyenne_CSS").text(moyenneCSS+"%");
-//    $(".moyenne_JS").text(moyenneJS+"%");
-
-    // OLD -----------
-//    $(".moyenne_test_rapide").text(localStorage.getItem("nb_question_rapide_reussie") + "/" + localStorage.getItem("nb_question_rapide"));
     
-//    if (localStorage.getItem("moyenne_examen") == null){
-//        $(".moyenne_exam").text("");
-//    }else{
-//        $(".moyenne_exam").text(localStorage.getItem("moyenne_examen")+"%");
-//    }
-//    
-//    if (localStorage.getItem("moyenne_HTML") == null || localStorage.getItem("moyenne_HTML") == "NaN"){
-//        $(".moyenne_HTML").text("");
-//    }else{
-//        $(".moyenne_HTML").text(localStorage.getItem("moyenne_HTML")+"%");
-//    }
-//    
-//    if (localStorage.getItem("moyenne_CSS") == null || localStorage.getItem("moyenne_CSS") == "NaN"){
-//        $(".moyenne_CSS").text("");
-//    }else{
-//        $(".moyenne_CSS").text(localStorage.getItem("moyenne_CSS")+"%");
-//    }
-//    
-//    if (localStorage.getItem("moyenne_JS") == null || localStorage.getItem("moyenne_JS") == "NaN"){
-//        $(".moyenne_JS").text("");
-//    }else{
-//        $(".moyenne_JS").text(localStorage.getItem("moyenne_JS")+"%");
-//    }
-//    
-//    $(".moyenne_test_rapide").text(localStorage.getItem("nb_question_rapide_reussie") + "/" + localStorage.getItem("nb_question_rapide"));
+    var moyennes = calcul_Moyenne()
+    
+    if (isNaN(moyennes.moyenne)){
+        $(".moyenne_exam").text("");
+    }else{
+        $(".moyenne_exam").text(moyennes.moyenne+"%");
+    }
+    
+    if (isNaN(moyennes.moyenneHTML)){
+        $(".moyenne_HTML").text("");
+    }else{
+        $(".moyenne_HTML").text(moyennes.moyenneHTML+"%");
+    }
+    
+    if (isNaN(moyennes.moyenneCSS)){
+        $(".moyenne_CSS").text("");
+    }else{
+        $(".moyenne_CSS").text(moyennes.moyenneCSS+"%");
+    }
+
+    if (isNaN(moyennes.moyenneJS)){
+        $(".moyenne_JS").text("");
+    }else{
+        $(".moyenne_JS").text(moyennes.moyenneJS+"%");
+    }
 }
 
 function calcul_Moyenne(){
-
     
-        
+    var moyenne = 0;
+    var moyenneHTML = 0;
+    var nbHTML=0;
+    var moyenneCSS = 0;
+    var nbCSS=0;
+    var moyenneJS = 0;
+    var nbJS=0;
+    
+    misAjourExamensFini();            
+    
     //TODO Doesn't include most recent examination made.
     for (i=0;i<=nb_examen;i++){
         
@@ -68,10 +64,13 @@ function calcul_Moyenne(){
             console.log("err",e)
         }
     }
+
         moyenne = Math.floor(moyenne / nb_examen);
         moyenneHTML = Math.floor(moyenneHTML/nbHTML);
         moyenneCSS = Math.floor(moyenneCSS/nbCSS);
         moyenneJS = Math.floor(moyenneJS/nbJS);
+    
+    return {moyenne : moyenne, moyenneHTML : moyenneHTML, moyenneCSS : moyenneCSS, moyenneJS : moyenneJS}
 }
 
 function ajouteExamenFini(donnees) {
@@ -89,10 +88,11 @@ function ajouteExamenFini(donnees) {
         });
 }
 
-function getExamensFini() {
+function misAjourExamensFini() {
     $.ajax({
         type: "GET",
         url: "/statistique/examen",
+        async: false,
 
         error:function(msg, string){
             console.log(msg);
@@ -100,8 +100,23 @@ function getExamensFini() {
 
         success:function(data){
             examens = data;
-            nb_examen = data.length;
-            calcul_Moyenne();
+            nb_examen = data.length;  
+            }
+        });
+}
+
+function getStatistiqueRapide() {
+    $.ajax({
+        type: "GET",
+        url: "/statistique/rapide",
+        async: false,
+
+        error:function(msg, string){
+            console.log(msg);
+        },
+
+        success:function(data){
+            statRapide = data; 
             }
         });
 }

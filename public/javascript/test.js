@@ -92,63 +92,47 @@ var dragged;
               if(testerReponse($(dragged).attr("id"))){
                   $(".dropzone div").css("background-color", "#95e66d");
                   miseAJourNoteActuelle();
+                  if ($(".test-content").length != 0) {
+                      miseAJourQuestionsRapides("nb_reussie");
+                  }
               }else{
                   $(".dropzone div").css("background-color", "#f55f2b");
+                  if ($(".test-content").length != 0) {
+                      miseAJourQuestionsRapides("nb_totale");
+                  }
               } 
               $('[draggable=true]').attr("draggable","false");
-              if ($(".test-content").length != 0){
-                    var nb_question = Number(localStorage.getItem("nb_question_rapide")) + 1;
-                    var nb = {
-                        nb_question_rapide : nb_question
-                    }
-                   miseAJourQuestionsRapides(nb); //{localStorage.setItem("nb_question_rapide//",nb_question);
-              }
+//              if ($(".test-content").length != 0){
+//
+//                   
+//              }
           }
       }, 
       false
   );
-
-function incrementRapide() {
-    $.ajax({
-        type: "POST",
-        url: "/statistiques/rapide",
-        data : nombre,
-
-        error:function(msg, string){
-            console.log(msg);
-        },
-
-        success:function(data){
-            alert("sd");}
-        });
-}
 
 function miseAJourNoteActuelle() {
     note_actuelle++;
     sessionStorage.setItem("note_actuelle", note_actuelle);
     $("#note-actuelle").text(note_actuelle);
     if($(".test-content").length != 0){
-        var nb_reussie = Number(localStorage.getItem("nb_question_rapide_reussie")) + 1;
-        var nb = {
-                        nb_question_rapide_reussie : nb_reussie
-                    }
-        miseAJourQuestionsRapides(nb);
- //localStorage.setItem("nb_question_rapide//_reussie",nb_reussie);
     }
 }
 
-function miseAJourQuestionsRapides(nombre) {
+function miseAJourQuestionsRapides(domaine) {
+    
     $.ajax({
         type: "POST",
-        url: "/statistiques/rapide",
-        data : nombre,
+        url: "/statistique/rapide",
+        data: {'domaine': domaine},
 
         error:function(msg, string){
             console.log(msg);
         },
 
         success:function(data){
-            alert("sd");}
+            alert(data.nb_reussie);
+        }
         });
 }
 
