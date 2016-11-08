@@ -14,7 +14,6 @@ function mise_A_Jour_Nb_Reponse_Possible(){
         });
 }
 
-
 window.onload=function() {
     mise_A_Jour_Stat(); 
     mise_A_Jour_Nb_Reponse_Possible();

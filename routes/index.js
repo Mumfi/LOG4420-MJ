@@ -82,8 +82,11 @@ router.get('/statistique/examen',function(req,res,next){
 
 router.delete('/statistique/examen',function(req,res,next){
          Examen.remove({},function(err) {
-            if (err) 
+            if (err) {
                 console.log(err);
+            } else {
+                res.send('success');
+            }
         });
 });
 
@@ -113,15 +116,19 @@ router.get('/statistique/rapide',function(req,res,next){
          Rapide.find(function(err, rapides) {
             if (err) {
                 res.send(err);
-            }
-            res.json(rapides);
+            } else {
+                res.json(rapides);
+            }             
         });
 });
 
-router.delete('/statistique/rapides',function(req,res,next){
+router.delete('/statistique/rapide',function(req,res,next){
          Rapide.remove({},function(err) {
-            if (err) 
+            if (err) {
                 console.log(err);
+            } else {
+                res.send('success');
+            }
         });
 });
 
@@ -130,7 +137,7 @@ router.delete('/questions',function(req,res,next){
             if (err) {
                 console.log(err);
             } else {
-                res('success');
+                res.send('success');
             }
     });
 });
