@@ -1,6 +1,6 @@
 var bonne_reponse;
 var note_actuelle = 0;
-var questions_totale = 0;
+var nb_repondue = 0;
 var old;
 var update;
 
@@ -104,6 +104,10 @@ var dragged;
               $('[draggable=true]').attr("draggable","false");
               if ($(".test-content").length != 0){
                    getStatistiqueRapide();
+              } else {
+                  nb_repondue++;
+                  sessionStorage.setItem("nb_repondue", nb_repondue);
+                  sauvegardeProgres();
               }
           }
       }, 
@@ -116,19 +120,4 @@ function miseAJourNoteActuelle() {
     $("#note-actuelle").text(note_actuelle);
     if($(".test-content").length != 0){
     }
-}
-
-function miseAJourQuestionsRapides(type) {
-    
-    $.ajax({
-        type: "POST",
-        url: "/statistique/rapide",
-        data: {'type': type},
-
-        error:function(msg, string){
-            console.log(msg);
-        },
-
-        success:function(data){}
-        });
 }

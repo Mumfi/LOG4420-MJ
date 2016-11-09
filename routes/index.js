@@ -143,6 +143,41 @@ router.delete('/statistique/rapide',function(req,res,next){
         });
 });
 
+router.post('/progres',function(req,res,next){
+        var progres = new Progres({
+            _id : 1,
+            nb_reussie : req.body.nb_reussie,
+            nb_repondue : req.body.nb_repondue,
+            nb_totale : req.body.nb_totale,
+            domaine : req.body.domaine
+        });
+            Progres.findOneAndUpdate({_id:1}, {nb_reussie:req.body.nb_reussie, nb_repondue:req.body.nb_repondue, nb_totale:req.body.nb_totale, domaine:req.body.domaine}, {new:true, upsert:true}, function(err){
+                if (err) {
+                    return next(err);
+                } else {
+                res.send('success');
+                }
+            });
+});
 
+router.delete('/progres',function(req,res,next){
+         Progres.remove({},function(err) {
+            if (err) {
+                console.log(err);
+            } else {
+                res.send('success');
+            }
+        });
+});
+
+router.get('/progres',function(req,res,next){
+         Progres.find(function(err, progres) {
+            if (err) {
+                res.send(err);
+            } else {
+                res.json(progres);
+            }             
+        });
+});
 
 module.exports = router;

@@ -63,9 +63,10 @@ function nouvelleQuestion(theme, num_question){
             
             
 window.onload=function() {
+    
     var theme = sessionStorage.getItem("theme");
     var nb_question = sessionStorage.getItem("nb_question");
-    var num_question = 1;
+    var num_question = parseInt(sessionStorage.getItem("nb_repondue") + 1);
     
     mise_A_Jour_Stat();
                     

@@ -57,7 +57,6 @@ function calcul_Moyenne(){
     
     misAjourExamensFini();    
     
-    //TODO Doesn't include most recent examination made.
     for (i=0;i<=nb_examen;i++){
         try{
         moyenne = moyenne + (examens[i].bonne_reponse / examens[i].totale_reponse * 100);
@@ -96,8 +95,7 @@ function ajouteExamenFini(donnees) {
             console.log(msg);
         },
 
-        success:function(data){
-            alert("feasd");
+        success:function(data){;
             }
         });
 }
@@ -115,6 +113,19 @@ function misAjourExamensFini() {
         success:function(data){
             examens = data;
             nb_examen = data.length;  
+            }
+        });
+}
+
+function deleteExamens() {
+         $.ajax({
+            type: "DELETE",
+            url: "/statistique/examen",
+
+            error:function(msg, string){
+            },
+
+            success:function(data){
             }
         });
 }
@@ -143,18 +154,7 @@ function getStatistiqueRapide() {
     });
 }
 
-function deleteExamens() {
-         $.ajax({
-            type: "DELETE",
-            url: "/statistique/examen",
 
-            error:function(msg, string){
-            },
-
-            success:function(data){
-            }
-        });
-}
 
 function deleteRapides() {
          $.ajax({
@@ -165,6 +165,75 @@ function deleteRapides() {
             },
 
             success:function(data){
+            }
+        });
+}
+
+function miseAJourQuestionsRapides(type) {
+    
+    $.ajax({
+        type: "POST",
+        url: "/statistique/rapide",
+        data: {'type': type},
+
+        error:function(msg, string){
+            console.log(msg);
+        },
+
+        success:function(data){}
+        });
+}
+
+function sauvegardeProgres() {
+    
+    var nb_reussie = sessionStorage.getItem("note_actuelle");
+    var nb_repondue = sessionStorage.getItem("nb_repondue");
+    var nb_totale = sessionStorage.getItem("nb_question");
+    var domaine = sessionStorage.getItem("theme");
+
+    $.ajax({
+        type: "POST",
+        url: "/progres",
+        data: {'nb_reussie': nb_reussie,
+                'nb_repondue': nb_repondue,
+                'nb_totale': nb_totale,
+                'domaine' : domaine},
+        error:function(msg, string){
+            console.log(msg);
+        },
+
+        success:function(data){}
+        });
+}
+
+function deleteProgres() {
+         $.ajax({
+            type: "DELETE",
+            url: "/progres",
+
+            error:function(msg, string){
+            },
+
+            success:function(data){
+            }
+        });
+}
+
+function getProgres() {
+    $.ajax({
+        type: "GET",
+        url: "/progres",
+        async: false,
+
+        error:function(msg, string){
+            console.log(msg);
+        },
+
+        success:function(data){
+            sessionStorage.setItem("note_actuelle", data[0].nb_reussie);
+            sessionStorage.setItem("nb_repondue", data[0].nb_repondue);
+            sessionStorage.setItem("nb_question", data[0].nb_totale);
+            sessionStorage.setItem("theme", data[0].domain);
             }
         });
 }
