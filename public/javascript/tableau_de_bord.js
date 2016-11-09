@@ -19,16 +19,24 @@ function continueExamen() {
 }
 
 window.onload=function() {
+    
     mise_A_Jour_Stat(); 
     mise_A_Jour_Nb_Reponse_Possible();
             
+    if (sessionStorage.getItem("nb_question") == 0 || sessionStorage.getItem("nb_question") == null) {
+        $("#continuer").css("display", "none");
+        $("#supprimer").css("display", "none");
+    }else{
+        $("#demarrer-examen").css("display", "none");
+    }
+    
 //    $("form").submit(function(){
 //        sessionStorage.setItem("theme", $("#theme").val());
 //        sessionStorage.setItem("nb_question", $("#nb_question").val());
 //        sessionStorage.setItem("note_actuelle", 0);
 //    });
     
-    $("#demarrer-Examen").click(function(e) {
+    $("#demarrer-examen").click(function(e) {
         sessionStorage.setItem("theme", $("#theme").val());
         sessionStorage.setItem("nb_question", $("#nb_question").val());
         sessionStorage.setItem("note_actuelle", 0);
@@ -42,11 +50,10 @@ window.onload=function() {
     });
     
     $("#continuer").click(function(e) {
-        getProgres();
+        continueProgres();
     });
     
     $(".statsection a").click(function(e){
-        
         e.preventDefault();
         deleteExamens();
         deleteRapides();

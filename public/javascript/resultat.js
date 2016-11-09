@@ -3,6 +3,10 @@ window.onload = function () {
     $("#questions-reussis").text(sessionStorage.getItem("note_actuelle"));
     $("#questions-totales").text(sessionStorage.getItem("nb_question"));
     
+    console.log("note act: " + sessionStorage.getItem("note_actuelle") + "\n answered:" +  
+            sessionStorage.getItem("nb_repondue") + "\n total: " + sessionStorage.getItem("nb_question") + "\n theme" + 
+            sessionStorage.getItem("theme"));
+    
     var pourcentage = parseInt(sessionStorage.getItem("note_actuelle")) / parseInt(sessionStorage.getItem("nb_question")) * 100;
     
     $("#note-finale").text(Math.floor(pourcentage));
@@ -26,4 +30,5 @@ window.onload = function () {
                     };
     ajouteExamenFini(info_exam);
     deleteProgres();
+    
 }          

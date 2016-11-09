@@ -207,19 +207,27 @@ function sauvegardeProgres() {
 }
 
 function deleteProgres() {
-         $.ajax({
-            type: "DELETE",
-            url: "/progres",
+    sessionStorage.setItem("theme", null);
+    sessionStorage.setItem("nb_question", 0);
+    sessionStorage.setItem("note_actuelle", 0);
+    sessionStorage.setItem("nb_repondue", 0);
 
-            error:function(msg, string){
-            },
+     $.ajax({
+        type: "DELETE",
+        url: "/progres",
 
-            success:function(data){
-            }
-        });
+        error:function(msg, string){
+        },
+
+        success:function(data){
+            $("#continuer").css("display", "none");
+            $("#supprimer").css("display", "none");
+            $("#demarrer-examen").css("display", "block");
+        }
+    });
 }
 
-function getProgres() {
+function continueProgres() {
     $.ajax({
         type: "GET",
         url: "/progres",
@@ -230,10 +238,14 @@ function getProgres() {
         },
 
         success:function(data){
-            sessionStorage.setItem("note_actuelle", data[0].nb_reussie);
-            sessionStorage.setItem("nb_repondue", data[0].nb_repondue);
-            sessionStorage.setItem("nb_question", data[0].nb_totale);
-            sessionStorage.setItem("theme", data[0].domain);
+//            sessionStorage.setItem("note_actuelle", data[0].nb_reussie);
+//            sessionStorage.setItem("nb_repondue", data[0].nb_repondue);
+//            sessionStorage.setItem("nb_question", data[0].nb_totale);
+//            sessionStorage.setItem("theme", data[0].domain);
+//            
+//            console.log("note act: " + sessionStorage.getItem("note_actuelle") + "\n answered:" +  
+//            sessionStorage.getItem("nb_repondue") + "\n total: " + sessionStorage.getItem("nb_question") + "\n theme" + 
+//            sessionStorage.getItem("theme"));
             }
         });
 }
