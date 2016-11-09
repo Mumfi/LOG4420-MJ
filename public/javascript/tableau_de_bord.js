@@ -14,10 +14,10 @@ function mise_A_Jour_Nb_Reponse_Possible(){
         });
 }
 
+
 window.onload=function() {
     mise_A_Jour_Stat(); 
     mise_A_Jour_Nb_Reponse_Possible();
-    $("#nb_question").attr("max",2);
             
     $("form").submit(function(){
         sessionStorage.setItem("theme", $("#theme").val());

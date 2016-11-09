@@ -7,6 +7,7 @@ var mongoose = require( 'mongoose' );
 var Question = mongoose.model( 'Question' );
 var Examen = mongoose.model( 'Examen' );
 var Rapide = mongoose.model( 'Rapide' );
+var Progres = mongoose.model( 'Progres' );
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -54,6 +55,16 @@ router.post('/questions',function(req,res,next){
             });
         });
     }
+});
+
+router.delete('/questions',function(req,res,next){
+    Question.remove({},function(err) {
+            if (err) {
+                console.log(err);
+            } else {
+                res.send('success');
+            }
+    });
 });
 
 router.post('/statistique/examen',function(req,res,next){
@@ -130,16 +141,6 @@ router.delete('/statistique/rapide',function(req,res,next){
                 res.send('success');
             }
         });
-});
-
-router.delete('/questions',function(req,res,next){
-    Question.remove({},function(err) {
-            if (err) {
-                console.log(err);
-            } else {
-                res.send('success');
-            }
-    });
 });
 
 

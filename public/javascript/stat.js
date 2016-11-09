@@ -37,7 +37,7 @@ function mise_A_Jour_Stat(){
         for (i=0; i<=nb_examen; i++){
             try {
             info_examen = examens[i]; 
-            $('#boite-modale table').append("<tr><td>Examen " + (i + 1) + " (" + info_examen.domaine + ")" + " :</td><td>"+ "Note : " + info_examen.bonne_reponse + "/" + info_examen.totale_reponse + "</td></tr>");
+                $('#boite-modale table').append("<tr><td>Examen " + (i + 1) + " (" + info_examen.domaine + ")" + " :</td><td>"+ "Note : " + info_examen.bonne_reponse + "/" + info_examen.totale_reponse + "</td></tr>");
             } catch (e) {
                 console.log(e);
             }
@@ -133,7 +133,11 @@ function getStatistiqueRapide() {
             if (data[0] == null) {
                 $(".moyenne_test_rapide").text("-");
             } else {
-               $(".moyenne_test_rapide").text(data[0].nb_reussie + " / " + data[0].nb_totale); 
+                if (data[0].nb_reussie == null) {
+                    $(".moyenne_test_rapide").text("0 / " + data[0].nb_totale);
+                }else{
+                    $(".moyenne_test_rapide").text(data[0].nb_reussie + " / " + data[0].nb_totale);
+                } 
             }            
         }
     });
