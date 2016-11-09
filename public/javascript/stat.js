@@ -228,6 +228,7 @@ function deleteProgres() {
 }
 
 function continueProgres() {
+    
     $.ajax({
         type: "GET",
         url: "/progres",
@@ -238,16 +239,35 @@ function continueProgres() {
         },
 
         success:function(data){
-//            sessionStorage.setItem("note_actuelle", data[0].nb_reussie);
-//            sessionStorage.setItem("nb_repondue", data[0].nb_repondue);
-//            sessionStorage.setItem("nb_question", data[0].nb_totale);
-//            sessionStorage.setItem("theme", data[0].domain);
-//            
+            try {
+            sessionStorage.setItem("note_actuelle", data[0].nb_reussie);
+            sessionStorage.setItem("nb_repondue", data[0].nb_repondue);
+            sessionStorage.setItem("nb_question", data[0].nb_totale);
+            sessionStorage.setItem("theme", data[0].domain);
+            } catch(e) {
+                console.log(e);
+            }
+            
 //            console.log("note act: " + sessionStorage.getItem("note_actuelle") + "\n answered:" +  
 //            sessionStorage.getItem("nb_repondue") + "\n total: " + sessionStorage.getItem("nb_question") + "\n theme" + 
 //            sessionStorage.getItem("theme"));
             }
         });
 }
+
+//function verifiCollectionExiste(nomColl) {
+//     $.ajax({
+//        type: "GET",
+//        url: "/ajax/verifie_collection_existe",
+//        data: {'nomColl': nomColl},
+//
+//        error:function(msg, string){
+//        },
+//
+//        success:function(data){
+//            alert("f");
+//        }
+//    });
+//}
 
 

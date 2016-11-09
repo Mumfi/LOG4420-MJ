@@ -18,7 +18,6 @@ router.get('/nouvelle_question_test', function(req, res, next) {
     Question.findOneRandom(function(err, element){
         res.json(element);
     });
-    
 });
 
 router.get('/nouvelle_question_exam_HTML',function(req, res, next) {
@@ -35,13 +34,22 @@ router.get('/nouvelle_question_exam_CSS',function(req, res, next) {
     });
 });
 
-router.get('/nouvelle_question_exam_JS',function(req, res, next) {
+router.get('/nouvelle_question_exam_JS',function(req, res, nextwe32) {
     var filtre = { domaine: { $eq: ['javascript'] } };
     Question.findRandom(filtre, {}, {count: 1},function(err, element){
         res.json(element[0]);
     });
 });
 
-
+//router.get('/verifie_collection_existe',function(req,res,next){
+//    mongoose.connect.db.listCollections({name: "progres"})
+//    .next(function(err, collinfo) {
+//        if (collinfo) {
+//            req.send("true");
+//        }else{
+//            req.send("false");
+//        }
+//    });
+//});
 
 module.exports = router;

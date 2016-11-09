@@ -1,8 +1,4 @@
 var bonne_reponse;
-var note_actuelle = 0;
-var nb_repondue = 0;
-var old;
-var update;
 
 function miseAJourQuestion(data){
     $('.question').html(data.question);
@@ -105,9 +101,13 @@ var dragged;
               if ($(".test-content").length != 0){
                    getStatistiqueRapide();
               } else {
-                  nb_repondue++;
-                  sessionStorage.setItem("nb_repondue", nb_repondue);
-                  sauvegardeProgres();
+                  
+                var nb_repondue = parseInt(sessionStorage.getItem("nb_repondue")) + 1;
+                sessionStorage.setItem("nb_repondue", nb_repondue);
+                sauvegardeProgres();
+                console.log("note act: " + sessionStorage.getItem("note_actuelle") + "\n answered:" +  
+                sessionStorage.getItem("nb_repondue") + "\n total: " + sessionStorage.getItem("nb_question") + "\n theme" + 
+                sessionStorage.getItem("theme"));
               }
           }
       }, 
@@ -115,9 +115,7 @@ var dragged;
   );
 
 function miseAJourNoteActuelle() {
-    note_actuelle++;
+    var note_actuelle = parseInt(sessionStorage.getItem("note_actuelle")) + 1;
     sessionStorage.setItem("note_actuelle", note_actuelle);
-    $("#note-actuelle").text(note_actuelle);
-    if($(".test-content").length != 0){
-    }
+    $("#note-actuelle").text(sessionStorage.getItem("note_actuelle"));
 }

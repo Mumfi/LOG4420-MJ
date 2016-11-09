@@ -19,6 +19,10 @@ function continueExamen() {
 }
 
 window.onload=function() {
+//    verifiCollectionExiste("progres");
+    console.log("note act: " + sessionStorage.getItem("note_actuelle") + "\n answered:" +  
+    sessionStorage.getItem("nb_repondue") + "\n total: " + sessionStorage.getItem("nb_question") + "\n theme" + 
+    sessionStorage.getItem("theme"));
     
     mise_A_Jour_Stat(); 
     mise_A_Jour_Nb_Reponse_Possible();
@@ -28,6 +32,7 @@ window.onload=function() {
         $("#supprimer").css("display", "none");
     }else{
         $("#demarrer-examen").css("display", "none");
+        
     }
     
 //    $("form").submit(function(){

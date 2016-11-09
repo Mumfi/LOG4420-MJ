@@ -66,7 +66,8 @@ window.onload=function() {
     
     var theme = sessionStorage.getItem("theme");
     var nb_question = sessionStorage.getItem("nb_question");
-    var num_question = parseInt(sessionStorage.getItem("nb_repondue"));
+    var num_question = parseInt(sessionStorage.getItem("nb_repondue")) + 1;
+    
     
     console.log("note act: " + sessionStorage.getItem("note_actuelle") + "\n answered:" +  
             sessionStorage.getItem("nb_repondue") + "\n total: " + sessionStorage.getItem("nb_question") + "\n theme" + 
