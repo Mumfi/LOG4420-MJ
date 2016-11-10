@@ -100,9 +100,6 @@ var dragged;
               dragged.parentNode.removeChild( dragged );
               event.target.appendChild( dragged );
               
-            
-              
-              
               if(testerReponse($(dragged).attr("id"))){
                   $(".dropzone div").css("background-color", "#95e66d");
                   miseAJourNoteActuelle();
