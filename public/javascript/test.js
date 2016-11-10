@@ -1,4 +1,4 @@
-var bonne_reponse;
+var id;
 
 function miseAJourQuestion(data){
     $('.question').html(data.question);
@@ -8,7 +8,7 @@ function miseAJourQuestion(data){
         var num = i+1;
         $(".reponses").append("<div id =\"" + num + "\" draggable=\"true\" ondragstart=\"event.dataTransfer.setData('text/plain',null)\">"+ data.reponses[i] + "</div>");
     }
-    bonne_reponse = data.bonne_reponse;
+    id = data.id;
 }
 
 function replacerReponse(){
@@ -19,8 +19,22 @@ function replacerReponse(){
 }
 
 function testerReponse(id_reponse){
+    var bonne_reponse;
+    $.ajax({
+        type: "GET",
+        url: "/questions/"+id,
+        async: false,
+
+        error:function(msg, string){
+        },
+
+        success:function(data){
+            bonne_reponse = data;
+        }
+    });
     return (id_reponse==bonne_reponse);
 }
+
 
 var dragged;
 
@@ -85,6 +99,10 @@ var dragged;
               event.target.style.background = "";
               dragged.parentNode.removeChild( dragged );
               event.target.appendChild( dragged );
+              
+            
+              
+              
               if(testerReponse($(dragged).attr("id"))){
                   $(".dropzone div").css("background-color", "#95e66d");
                   miseAJourNoteActuelle();
@@ -105,9 +123,6 @@ var dragged;
                 var nb_repondue = parseInt(sessionStorage.getItem("nb_repondue")) + 1;
                 sessionStorage.setItem("nb_repondue", nb_repondue);
                 sauvegardeProgres();
-                console.log("note act: " + sessionStorage.getItem("note_actuelle") + "\n answered:" +  
-                sessionStorage.getItem("nb_repondue") + "\n total: " + sessionStorage.getItem("nb_question") + "\n theme" + 
-                sessionStorage.getItem("theme"));
               }
           }
       }, 

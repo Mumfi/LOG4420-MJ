@@ -49,12 +49,20 @@ router.post('/questions',function(req,res,next){
             bonne_reponse : req.body.bonne_reponse
         });
         Question.count({}, function(err , count){
-            question.id = count;
+            question._id = count+1;
             question.save( function( err, question, count ){
                  res.send(question); 
             });
         });
     }
+});
+
+router.get('/questions/:id',function(req,res,next){
+    id = req.params.id;
+    Question.find({ _id: { $eq: id } }, function (err, question) {
+        bonne_reponse = question[0].bonne_reponse;
+        res.json(bonne_reponse);
+    });
 });
 
 router.delete('/questions',function(req,res,next){
@@ -74,7 +82,7 @@ router.post('/statistique/examen',function(req,res,next){
             totale_reponse : req.body.nb_reponse
         });
     Examen.count({}, function(err , count){
-            examen._id = count;
+            examen._id = count+1;
             examen.save( function(err){
                 if (err)
                 return next(err);

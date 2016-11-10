@@ -14,32 +14,25 @@ function mise_A_Jour_Nb_Reponse_Possible(){
         });
 }
 
-function continueExamen() {
-    
-}
-
 window.onload=function() {
-//    verifiCollectionExiste("progres");
-    console.log("note act: " + sessionStorage.getItem("note_actuelle") + "\n answered:" +  
-    sessionStorage.getItem("nb_repondue") + "\n total: " + sessionStorage.getItem("nb_question") + "\n theme" + 
-    sessionStorage.getItem("theme"));
     
     mise_A_Jour_Stat(); 
     mise_A_Jour_Nb_Reponse_Possible();
-            
-    if (sessionStorage.getItem("nb_question") == 0 || sessionStorage.getItem("nb_question") == null) {
+    
+    
+    if (!examenEnregistre()) {
         $("#continuer").css("display", "none");
         $("#supprimer").css("display", "none");
+        $(".indication").text("Pour commencer un examen, veuillez remplir le formulaire ci-dessous :");
     }else{
+        $("label").css("display", "none");
         $("#demarrer-examen").css("display", "none");
+        $("#theme").css("display", "none");
+        $("#nb_question").css("display", "none");
+        $(".indication").text("Un examen a été sauvegardé, veuillez choisir une des options suivantes :");
         
     }
     
-//    $("form").submit(function(){
-//        sessionStorage.setItem("theme", $("#theme").val());
-//        sessionStorage.setItem("nb_question", $("#nb_question").val());
-//        sessionStorage.setItem("note_actuelle", 0);
-//    });
     
     $("#demarrer-examen").click(function(e) {
         sessionStorage.setItem("theme", $("#theme").val());
@@ -51,7 +44,10 @@ window.onload=function() {
     $("#supprimer").click(function(e) {
         e.preventDefault();
         deleteProgres();
-
+        $("label").css("display", "inline");
+        $("#demarrer-examen").css("display", "inline");
+        $("#theme").css("display", "inline");
+        $("#nb_question").css("display", "inline");
     });
     
     $("#continuer").click(function(e) {

@@ -3,7 +3,7 @@ var nb_examen = 0;
 
 function mise_A_Jour_Stat(){  
     
-    var moyennes = calcul_Moyenne()
+    var moyennes = calcul_Moyenne();
     
     if (isNaN(moyennes.moyenne)){
         $(".moyenne_exam").text("-");
@@ -31,17 +31,15 @@ function mise_A_Jour_Stat(){
     
     getStatistiqueRapide();
     
-    if (examens == ""){
+//    examens.forEach(function(exam){
+
+    $('#boite-modale table').empty();
+    if (examens.length == 0){
         $('#boite-modale table').append("<p>Rien à montrer. Bonne chance!</p>");
     } else {
-        for (i=0; i<=nb_examen; i++){
-            try {
-            info_examen = examens[i]; 
-                $('#boite-modale table').append("<tr><td>Examen " + (i + 1) + " (" + info_examen.domaine + ")" + " :</td><td>"+ "Note : " + info_examen.bonne_reponse + "/" + info_examen.totale_reponse + "</td></tr>");
-            } catch (e) {
-                console.log(e);
-            }
-        }
+        examens.forEach(function(exam){
+             $('#boite-modale table').append("<tr><td>Examen " + exam._id + " (" + exam.domaine + ")" + " :</td><td>"+ "Note : " + exam.bonne_reponse + "/" + exam.totale_reponse + "</td></tr>");
+        });
     }
 }
 
@@ -55,32 +53,30 @@ function calcul_Moyenne(){
     var moyenneJS = 0;
     var nbJS=0;
     
-    misAjourExamensFini();    
+    misAjourExamensFini();
     
-    for (i=0;i<=nb_examen;i++){
-        try{
-        moyenne = moyenne + (examens[i].bonne_reponse / examens[i].totale_reponse * 100);
+    examens.forEach(function(exam){
+        moyenne = moyenne + (exam.bonne_reponse / exam.totale_reponse * 100);
             
-        if (examens[i].domaine == "html"){
-            moyenneHTML = moyenneHTML + (examens[i].bonne_reponse / examens[i].totale_reponse * 100);
+        if (exam.domaine == "html"){
+            moyenneHTML = moyenneHTML + (exam.bonne_reponse / exam.totale_reponse * 100);
             nbHTML++;
         }
-        if (examens[i].domaine == "css"){
-            moyenneCSS = moyenneCSS + (examens[i].bonne_reponse / examens[i].totale_reponse * 100);
+        if (exam.domaine == "css"){
+            moyenneCSS = moyenneCSS + (exam.bonne_reponse / exam.totale_reponse * 100);
             nbCSS++;
         }
-        if (examens[i].domaine == "javascript"){
-            moyenneJS = moyenneJS + (examens[i].bonne_reponse / examens[i].totale_reponse * 100);
+        if (exam.domaine == "javascript"){
+            moyenneJS = moyenneJS + (exam.bonne_reponse / exam.totale_reponse * 100);
             nbJS++;
         }      
-        }catch(err){
-            console.log("err",err)
-        }
-    }
-        moyenne = Math.floor(moyenne / nb_examen);
-        moyenneHTML = Math.floor(moyenneHTML/nbHTML);
-        moyenneCSS = Math.floor(moyenneCSS/nbCSS);
-        moyenneJS = Math.floor(moyenneJS/nbJS);
+        
+    });
+    
+    moyenne = Math.floor(moyenne / nb_examen);
+    moyenneHTML = Math.floor(moyenneHTML/nbHTML);
+    moyenneCSS = Math.floor(moyenneCSS/nbCSS);
+    moyenneJS = Math.floor(moyenneJS/nbJS);
     
     return {moyenne : moyenne, moyenneHTML : moyenneHTML, moyenneCSS : moyenneCSS, moyenneJS : moyenneJS}
 }
@@ -228,7 +224,6 @@ function deleteProgres() {
 }
 
 function continueProgres() {
-    
     $.ajax({
         type: "GET",
         url: "/progres",
@@ -239,35 +234,27 @@ function continueProgres() {
         },
 
         success:function(data){
-            try {
             sessionStorage.setItem("note_actuelle", data[0].nb_reussie);
             sessionStorage.setItem("nb_repondue", data[0].nb_repondue);
             sessionStorage.setItem("nb_question", data[0].nb_totale);
-            sessionStorage.setItem("theme", data[0].domain);
-            } catch(e) {
-                console.log(e);
-            }
-            
-//            console.log("note act: " + sessionStorage.getItem("note_actuelle") + "\n answered:" +  
-//            sessionStorage.getItem("nb_repondue") + "\n total: " + sessionStorage.getItem("nb_question") + "\n theme" + 
-//            sessionStorage.getItem("theme"));
-            }
-        });
+            sessionStorage.setItem("theme", data[0].domaine);
+        }
+    });
 }
 
-//function verifiCollectionExiste(nomColl) {
-//     $.ajax({
-//        type: "GET",
-//        url: "/ajax/verifie_collection_existe",
-//        data: {'nomColl': nomColl},
-//
-//        error:function(msg, string){
-//        },
-//
-//        success:function(data){
-//            alert("f");
-//        }
-//    });
-//}
+function examenEnregistre() {
+    $.ajax({
+        type: "GET",
+        url: "/progres",
+        async: false,
+        error:function(msg, string){
+        },
+
+        success:function(data){
+            rempli = data.length != 0;
+       }
+    });
+    return (rempli);
+}
 
 
